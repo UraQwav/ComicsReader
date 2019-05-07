@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="ComicsMaster.SignUp"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ComicsMaster"
+             mc:Ignorable="d" 
+             d:DesignHeight="455" d:DesignWidth="720">
+    <Grid x:Name="SignUpBacgraund" Style="{StaticResource SignUploginBackground}">
+        <Border Background="Black" Opacity="0.65"/>
+        <ScrollViewer Margin="0,80,0,0" Background="{x:Null}" Height="375" VerticalAlignment="Top">
+            <Grid HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="55"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">NAME</TextBlock>
+                <TextBox x:Name="NameBox" Grid.Row="1" Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
+                <TextBlock Grid.Row="2" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">SURNAME</TextBlock>
+                <TextBox x:Name="SurNameBox" Grid.Row="3"  Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
+                <TextBlock Grid.Row="4" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">GENDER</TextBlock>
+                <TextBox x:Name="GenderBox" Grid.Row="5" Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
+                <TextBlock Grid.Row="6" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">AGE</TextBlock>
+                <TextBox x:Name="AgeBox" Grid.Row="7"  Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
+                <TextBlock Grid.Row="8" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">CREATE LOGIN</TextBlock>
+                <TextBox x:Name="LoginSignUpBox" Grid.Row="9" Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
+                <TextBlock Grid.Row="10" Style="{StaticResource LableControldStyle}">CREATE PASSWORD</TextBlock>
+                <PasswordBox x:Name="PasswordSignUpBox" Grid.Row="11"  Style="{StaticResource SignUpInputControlStyle}"></PasswordBox>
+                <TextBlock Grid.Row="12" Style="{StaticResource LableControldStyle}">REPEAT PASSWORD</TextBlock>
+                <PasswordBox x:Name="PasswordSignUpRepeatBox" Grid.Row="13"  Style="{StaticResource SignUpInputControlStyle}"></PasswordBox>
+                <Button x:Name="SignUpButton"  Grid.Row="14" Style="{StaticResource ButtonSignStyle}" Click="SignUpButton_Click">CREATE AN ACCOUNT</Button>
+            </Grid>
+        </ScrollViewer>
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="91" >
+            <TextBlock Style="{StaticResource SignUpTitleControlStyle}" VerticalAlignment="Top" Margin="158,31,158,0">SIGN UP</TextBlock>
+        </Grid>
+        
+    </Grid>
+</UserControl>

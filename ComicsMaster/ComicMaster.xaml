@@ -1,0 +1,108 @@
+﻿<Window x:Class="ComicsMaster.ComicMaster"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ComicsMaster"
+         xmlns:GIF="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+            
+        mc:Ignorable="d"
+        Icon="images/icons8-grey-48.png"
+        Title="ComicMaster" Height="700" Width="1130"
+        WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}">
+
+
+    <Grid x:Name="Shadow" Style="{StaticResource ComicMasterBackground}" Margin="10,10,10,10">
+        <Grid Height="55" VerticalAlignment="Top">
+            <Border Background="DarkRed"></Border>
+        </Grid>
+        <Grid>
+            <ScrollViewer Margin="0,0,825,0">
+                <Grid Width="262" HorizontalAlignment="Left" Background="DarkRed">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="23"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="UserImage" Grid.Row="1" Source="images/16204260.jpg" Margin="1,1,1,1"></Image>
+                    <Border Grid.Row="1" Grid.RowSpan="16"  Background="Black" Opacity="0.2"></Border>
+                    <Button x:Name="ChangeUserImage" Style="{StaticResource ButtonUserLoginImages}" Grid.Row="1" Height="36"  Margin="112,204,-32,9" Click="ChangeUserImage_Click">Choose your Image _</Button>
+                    <Grid x:Name="RecomendationButton" Grid.Row="2" Margin="0,10,0,0" Height="40">
+                        <Border x:Name="RecommendationBackground" Background="DarkRed" Opacity="1"></Border>
+                        <Image Source="images/icons8-gas-filled-50.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                        <Button x:Name="RecommendationButton2" Style="{StaticResource ButtonMenu}" Height="25" Click="RecommendationButton2_Click">Recommendation</Button>
+                    </Grid>
+                    <Grid x:Name="LatestUpdateButton" Grid.Row="3" Margin="0,10,0,0" Height="40">
+                        <Border x:Name="LatestUpdateBackground" Background="DarkRed" Opacity="0"></Border>
+                        <Image Source="images/icons8-update-file-filled-50.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                        <Button x:Name="LatestUpdateButton2" Style="{StaticResource ButtonMenu}"  Height="25" Click="LatestUpdateButton2_Click">Latest updates</Button>
+                    </Grid>
+                    <Grid x:Name="CategoryButton" Grid.Row="4" Margin="0,10,0,0" Height="40">
+                        <Border x:Name="CategoryBackground" Background="DarkRed" Opacity="0"></Border>
+                        <Image Source="images/icons8-sorting-52.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                        <Button x:Name="CategoryButton2" Style="{StaticResource ButtonMenu}"  Height="25" Click="CategoryButton2_Click">Category</Button>
+                    </Grid>
+                    <Grid x:Name="HistoryButton" Grid.Row="5" Margin="0,10,0,0" Height="40">
+                        <Border x:Name="HistoryBackground" Background="DarkRed" Opacity="0"></Border>
+                        <Image Source="images/icons8-time-machine-48.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                        <Button x:Name="HistoryButton2" Style="{StaticResource ButtonMenu}" Height="25" Click="HistoryButton2_Click">History</Button>
+                    </Grid>
+                    <Grid x:Name="FavouritesButton" Grid.Row="6" Margin="0,10,0,0" Height="40">
+                        <Border x:Name="FavouritesBackground" Background="DarkRed" Opacity="0"></Border>
+                        <Image Source="images/icons8-favorite-folder-filled-50.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                        <Button x:Name="FavouritesButton2" Style="{StaticResource ButtonMenu}"  Height="25" Click="FavouritesButton2_Click">Favourites</Button>
+                    </Grid>
+                    <Separator Grid.Row="7" Margin="5,0,5,0"/>
+                    <Label Grid.Row="8" Foreground="White" Margin="5,5,8,0">Others</Label>
+                    <Grid x:Name="SettingsButton" Grid.Row="9" Margin="0,10,0,0" Height="40">
+                        <Border x:Name="SettingsBackground" Background="DarkRed" Opacity="0"></Border>
+                        <Image Source="images/icons8-services-60.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                        <Button x:Name="SettingsButton2" Style="{StaticResource ButtonMenu}"  Height="25" Click="SettingsButton2_Click">Settings</Button>
+                    </Grid>
+                    <Grid x:Name="BrowserButton" Grid.Row="10" Margin="0,10,0,0" Height="40">
+                        <Border x:Name="BrowserBackground" Background="DarkRed" Opacity="0"></Border>
+                        <Image Source="images/icons8-internet-64.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                        <Button x:Name="BrowserButton2" Style="{StaticResource ButtonMenu}" Height="25" Click="BrowserButton2_Click">Visit my Website</Button>
+                    </Grid>
+                    <Grid x:Name="addButton" Height="0"  Grid.Row="11" Margin="0,10,0,0">
+                        <Border x:Name="addBackground" Background="DarkRed" Opacity="0"></Border>
+                        <Image Source="images/icons8-internet-64.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+                        <Button x:Name="addButton2" Style="{StaticResource ButtonMenu}" Height="25" Click="addButton2_Click">Visit my Website</Button>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+        <Grid Margin="262,25,0,0" Background="White">
+            <Border Background="Black" Opacity="0.05"/>
+            <ScrollViewer>
+                <Grid x:Name="Content">
+
+                    <Image x:Name="imBackGround" GIF:AnimationBehavior.SourceUri="/Images/LOADER.gif" Width="50" Height="50"/>
+
+                </Grid>
+            </ScrollViewer>
+           
+        </Grid>
+        <Grid VerticalAlignment="Top" Height="25" MouseDown="Grid_MouseDown" >
+            <Border x:Name="NavigationPanel" Background="Black" Opacity=".5"></Border>
+            <Button Style="{StaticResource ButtonLoginClouse}" Height="15" Width="15" HorizontalAlignment="Left" Margin="10,5,5,5" Background="DarkRed" Click="Button_Click"></Button>
+            <Button Style="{StaticResource ButtonLoginMin}" Height="15" Width="15" HorizontalAlignment="Left" Margin="35,5,5,5" Background="DarkOrange" Click="Button_Click_1"></Button>
+            <Button Style="{StaticResource ButtonLoginMax}" Height="15" Width="15" HorizontalAlignment="Left" Margin="60,5,5,5" Background="DarkOrange" Click="Button_Click_2"></Button>
+        </Grid>
+    </Grid>
+</Window>

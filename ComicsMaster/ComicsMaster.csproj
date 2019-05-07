@@ -35,8 +35,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.13.3.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.13.3\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.1360, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialDesignThemes.2.6.0-ci1360\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.6.0-preview4.19212.13\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.6.0-preview4.19212.13\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.6.0-preview4.19212.13\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.6.0-preview4.19212.13\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -49,12 +78,62 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.18.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.18\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+    <Reference Include="XamlAnimatedGif, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XamlAnimatedGif.1.2.1\lib\net45\XamlAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ADMINPAGE.xaml.cs">
+      <DependentUpon>ADMINPAGE.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ComicsPreview.xaml.cs">
+      <DependentUpon>ComicsPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Iessie.xaml.cs">
+      <DependentUpon>Iessie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Loader.xaml.cs">
+      <DependentUpon>Loader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Recomend.xaml.cs">
+      <DependentUpon>Recomend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SignUp.xaml.cs">
+      <DependentUpon>SignUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl1.xaml.cs">
+      <DependentUpon>UserControl1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl2.xaml.cs">
+      <DependentUpon>UserControl2.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ADMINPAGE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ComicMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ComicsPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Iessie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Loader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,10 +142,29 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ComicMaster.xaml.cs">
+      <DependentUpon>ComicMaster.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Recomend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SignUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,13 +184,84 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\LoginBackground.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-betman-stary-48.png" />
+    <Resource Include="images\unnamed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\avengers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-grey-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-kapitan-amerika-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\985f9f20-b72b-4589-93f6-ba6d6936a86e_x50.jpg" />
+    <Resource Include="images\JD-11-128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Login.jpg" />
+    <Resource Include="images\Login2.jpg" />
+    <Resource Include="images\Login3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\AlbertHulm.png" />
+    <Resource Include="images\Bloodhound-2.jpg" />
+    <Resource Include="images\captain-america.jpg" />
+    <Resource Include="images\images.jpg" />
+    <Resource Include="images\sin-city.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-favorite-folder-filled-100.png" />
+    <Resource Include="images\icons8-favorite-folder-filled-50.png" />
+    <Resource Include="images\icons8-gas-filled-50.png" />
+    <Resource Include="images\icons8-internet-64.png" />
+    <Resource Include="images\icons8-services-60.png" />
+    <Resource Include="images\icons8-settings-filled-50.png" />
+    <Resource Include="images\icons8-sorting-52.png" />
+    <Resource Include="images\icons8-time-machine-48.png" />
+    <Resource Include="images\icons8-update-file-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\16204260.jpg" />
+    <Resource Include="images\aIuZgCoi9Dc.jpeg" />
+    <Resource Include="images\jonathan-gray-image-72.jpg" />
+    <Resource Include="images\sean_chen_image_rz_opt.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\001.jpg" />
+    <Resource Include="images\002.jpg" />
+    <Resource Include="images\003.jpg" />
+    <Resource Include="images\004.jpg" />
+    <Resource Include="images\005.jpg" />
+    <Resource Include="images\006.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="loadinfo.net %281%29.gif" />
+    <Resource Include="loadinfo.net %282%29.gif" />
+    <Resource Include="loadinfo.net %283%29.gif" />
+    <Resource Include="loadinfo.net.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\LOADER.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

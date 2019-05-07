@@ -3,10 +3,50 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:GIF="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
+        
         xmlns:local="clr-namespace:ComicsMaster"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Icon="images/icons8-grey-48.png"
+        Title="MainWindow" Height="480" Width="720" 
+        WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}" ResizeMode="NoResize">
+    <!--"#283955"-->
+    <Grid x:Name="Shadow" Style="{StaticResource loginBackground}" Margin="10,10,10,10">
+        <Border Background="Black" Opacity=".65"></Border>
+        <Grid HorizontalAlignment="Center" Margin="0,85,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="1" Style="{StaticResource TitleControlStyle}">SIGN IN</TextBlock>
+            <TextBlock Grid.Row="2" Style="{StaticResource LableControldStyle}">USERNAME</TextBlock>
+            <TextBox x:Name="LoginBox" Grid.Row="3" Style="{StaticResource InputControlStyle}"></TextBox>
+            <TextBlock Grid.Row="4" Style="{StaticResource LableControldStyle}">PASSWORD</TextBlock>
+            <PasswordBox x:Name="PasswordBox" Grid.Row="5"  Style="{StaticResource InputControlStyle}"></PasswordBox>
+            <Button Click="SignIn_Click" Grid.Row="6" Style="{StaticResource ButtonSignStyle}">SIGN IN</Button>
+            <Separator Grid.Row="7"/>
+            <Button Grid.Row="8" Style="{StaticResource ButtonLinkStyle}">Forgot password?</Button>
+            <Button x:Name="SignUpButton" Grid.Row="9" Style="{StaticResource ButtonLinkStyle}" Click="SignUpButton_Click">SIGN UP</Button>
+
+        </Grid>
+        <local:SignUp   x:Name="SignUp" Height="0" VerticalAlignment="Bottom"></local:SignUp>
+        <Grid VerticalAlignment="Top" Height="25" MouseDown="Grid_MouseDown" >
+            <Border x:Name="NavigationPanel" Background="Black" Opacity=".5"></Border>
+            <Button Style="{StaticResource ButtonLoginClouse}" Height="15" Width="15" HorizontalAlignment="Left" Margin="10,5,5,5" Background="DarkRed" Click="Button_Click"></Button>
+            <Button Style="{StaticResource ButtonLoginMin}" Height="15" Width="15" HorizontalAlignment="Left" Margin="35,5,5,5" Background="DarkOrange" Click="Button_Click_1"></Button>
+            <Button Style="{StaticResource ButtonLoginMax}" Height="15" Width="15" HorizontalAlignment="Left" Margin="60,5,5,5" Background="DarkOrange" Click="Button_Click_2"></Button>
+        </Grid>
+
     </Grid>
 </Window>
+
+    
