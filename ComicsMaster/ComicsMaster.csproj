@@ -114,11 +114,18 @@
     <Compile Include="UserControl2.xaml.cs">
       <DependentUpon>UserControl2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl3.xaml.cs">
+      <DependentUpon>UserControl3.xaml</DependentUpon>
+    </Compile>
     <Page Include="ADMINPAGE.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ComicMaster.xaml">
+    <Page Include="View\ComicImages.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ComicMaster.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,7 +141,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -142,11 +149,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ComicMaster.xaml.cs">
+    <Compile Include="View\ComicImages.xaml.cs">
+      <DependentUpon>ComicImages.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ComicMaster.xaml.cs">
       <DependentUpon>ComicMaster.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Recomend.xaml">
@@ -162,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,11 +271,24 @@
   <ItemGroup>
     <Resource Include="loadinfo.net %281%29.gif" />
     <Resource Include="loadinfo.net %282%29.gif" />
-    <Resource Include="loadinfo.net %283%29.gif" />
+    <Resource Include="images\loadinfo.net %283%29.gif" />
     <Resource Include="loadinfo.net.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\LOADER.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-plus-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\7j9n.gif" />
+    <Resource Include="images\7TwD.gif" />
+    <Resource Include="images\7TwG.gif" />
+    <Resource Include="images\g0RB.gif" />
+    <Resource Include="images\Uond.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-error-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

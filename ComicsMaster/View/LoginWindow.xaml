@@ -1,4 +1,4 @@
-﻿<Window x:Class="ComicsMaster.MainWindow"
+﻿<Window x:Class="ComicsMaster.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
         
         xmlns:local="clr-namespace:ComicsMaster"
         mc:Ignorable="d"
-        Icon="images/icons8-grey-48.png"
+        Icon="/ComicsMaster;component/images/icons8-grey-48.png"
         Title="MainWindow" Height="480" Width="720" 
         WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}" ResizeMode="NoResize">
     <!--"#283955"-->
@@ -29,16 +29,16 @@
 
             <TextBlock Grid.Row="1" Style="{StaticResource TitleControlStyle}">SIGN IN</TextBlock>
             <TextBlock Grid.Row="2" Style="{StaticResource LableControldStyle}">USERNAME</TextBlock>
-            <TextBox x:Name="LoginBox" Grid.Row="3" Style="{StaticResource InputControlStyle}"></TextBox>
+            <TextBox x:Name="LoginBox" Grid.Row="3" Style="{StaticResource InputControlStyle}">ADMIN</TextBox>
             <TextBlock Grid.Row="4" Style="{StaticResource LableControldStyle}">PASSWORD</TextBlock>
-            <PasswordBox x:Name="PasswordBox" Grid.Row="5"  Style="{StaticResource InputControlStyle}"></PasswordBox>
+            <PasswordBox x:Name="PasswordBox" Grid.Row="5"  Style="{StaticResource InputControlStyle}" Password="mCNXBZqWERTY0776246qWERTY"></PasswordBox>
             <Button Click="SignIn_Click" Grid.Row="6" Style="{StaticResource ButtonSignStyle}">SIGN IN</Button>
             <Separator Grid.Row="7"/>
             <Button Grid.Row="8" Style="{StaticResource ButtonLinkStyle}">Forgot password?</Button>
             <Button x:Name="SignUpButton" Grid.Row="9" Style="{StaticResource ButtonLinkStyle}" Click="SignUpButton_Click">SIGN UP</Button>
 
         </Grid>
-        <local:SignUp   x:Name="SignUp" Height="0" VerticalAlignment="Bottom"></local:SignUp>
+        <local:SignUp   x:Name="SignUp" Height="0" Opacity="0"  VerticalAlignment="Bottom"></local:SignUp>
         <Grid VerticalAlignment="Top" Height="25" MouseDown="Grid_MouseDown" >
             <Border x:Name="NavigationPanel" Background="Black" Opacity=".5"></Border>
             <Button Style="{StaticResource ButtonLoginClouse}" Height="15" Width="15" HorizontalAlignment="Left" Margin="10,5,5,5" Background="DarkRed" Click="Button_Click"></Button>

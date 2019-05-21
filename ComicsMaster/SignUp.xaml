@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ComicsMaster"
              mc:Ignorable="d" 
-             d:DesignHeight="455" d:DesignWidth="720">
+             d:DesignHeight="655" d:DesignWidth="720">
     <Grid x:Name="SignUpBacgraund" Style="{StaticResource SignUploginBackground}">
         <Border Background="Black" Opacity="0.65"/>
-        <ScrollViewer Margin="0,80,0,0" Background="{x:Null}" Height="375" VerticalAlignment="Top">
+        <ScrollViewer Margin="0,80,0,0" Background="{x:Null}" VerticalAlignment="Top">
             <Grid HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -30,26 +30,37 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
+                <Image x:Name="WarningName" Width="35" Source="images/icons8-error-48.png" Margin="-60,36,274,37" Grid.RowSpan="3" Visibility="Hidden"></Image>
+                <Image x:Name="WarningSurname" Width="35" Source="images/icons8-error-48.png" Margin="-60,36,274,37" Grid.RowSpan="3" Visibility="Hidden" Grid.Row="2"></Image>
+                <Image x:Name="WarningAge" Width="35" Source="images/icons8-error-48.png" Margin="-60,36,274,37" Grid.RowSpan="3" Visibility="Hidden" Grid.Row="4"></Image>
+                <Image x:Name="WarningLogin" Width="35" Source="images/icons8-error-48.png" Margin="-60,37,274,36" Grid.RowSpan="3" Visibility="Hidden" Grid.Row="6"></Image>
+                <Image x:Name="WarningPassword" Width="35" Source="images/icons8-error-48.png" Margin="-60,37,274,36" Grid.RowSpan="3" Visibility="Hidden" Grid.Row="8"></Image>
+                <Image x:Name="WarningReapetPas" Width="35" Source="images/icons8-error-48.png" Margin="-60,6,274,6" Grid.Row="11" Visibility="Hidden"/>
                 <TextBlock Grid.Row="0" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">NAME</TextBlock>
-                <TextBox x:Name="NameBox" Grid.Row="1" Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
+                <TextBlock x:Name="BlockName" Grid.Row="1" Style="{StaticResource LableControldStyle}" Height="20" VerticalAlignment="Top" Margin="265,5,-197,0"></TextBlock>
+
+                <TextBox x:Name="NameBox" Grid.Row="1" Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top" TextChanged="NameBox_TextChanged" PreviewKeyDown="NameBox_PreviewKeyDown" PreviewTextInput="NameBox_PreviewTextInput"></TextBox>
                 <TextBlock Grid.Row="2" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">SURNAME</TextBlock>
-                <TextBox x:Name="SurNameBox" Grid.Row="3"  Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
-                <TextBlock Grid.Row="4" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">GENDER</TextBlock>
-                <TextBox x:Name="GenderBox" Grid.Row="5" Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
-                <TextBlock Grid.Row="6" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">AGE</TextBlock>
-                <TextBox x:Name="AgeBox" Grid.Row="7"  Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
-                <TextBlock Grid.Row="8" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">CREATE LOGIN</TextBlock>
-                <TextBox x:Name="LoginSignUpBox" Grid.Row="9" Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top"></TextBox>
-                <TextBlock Grid.Row="10" Style="{StaticResource LableControldStyle}">CREATE PASSWORD</TextBlock>
-                <PasswordBox x:Name="PasswordSignUpBox" Grid.Row="11"  Style="{StaticResource SignUpInputControlStyle}"></PasswordBox>
-                <TextBlock Grid.Row="12" Style="{StaticResource LableControldStyle}">REPEAT PASSWORD</TextBlock>
-                <PasswordBox x:Name="PasswordSignUpRepeatBox" Grid.Row="13"  Style="{StaticResource SignUpInputControlStyle}"></PasswordBox>
-                <Button x:Name="SignUpButton"  Grid.Row="14" Style="{StaticResource ButtonSignStyle}" Click="SignUpButton_Click">CREATE AN ACCOUNT</Button>
+                <TextBlock x:Name="BlockSurname" Grid.Row="3" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top" Margin="265,6,-197,0"></TextBlock>
+                <TextBox x:Name="SurNameBox" Grid.Row="3"  Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top" TextChanged="SurNameBox_TextChanged"  PreviewKeyDown="SurNameBox_PreviewKeyDown" PreviewTextInput="SurNameBox_PreviewTextInput"></TextBox>
+                <TextBlock Grid.Row="4" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">AGE</TextBlock>
+                <TextBox x:Name="AgeBox" Grid.Row="5"  Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top" TextChanged="AgeBox_TextChanged" PreviewKeyDown="AgeBox_PreviewKeyDown" PreviewTextInput="AgeBox_PreviewTextInput"></TextBox>
+                <TextBlock Grid.Row="6" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top">CREATE LOGIN</TextBlock>
+                <TextBox x:Name="LoginSignUpBox" Grid.Row="7" Style="{StaticResource SignUpInputControlStyle}" VerticalAlignment="Top" TextChanged="LoginSignUpBox_TextChanged" PreviewTextInput="LoginSignUpBox_PreviewTextInput" PreviewKeyDown="LoginSignUpBox_PreviewKeyDown"></TextBox>
+                <TextBlock Grid.Row="8" Style="{StaticResource LableControldStyle}">CREATE PASSWORD</TextBlock>
+                <PasswordBox x:Name="PasswordSignUpBox" Grid.Row="9"  Style="{StaticResource SignUpInputControlStyle}" PasswordChanged="PasswordSignUpBox_PasswordChanged"></PasswordBox>
+                <TextBlock Grid.Row="10" Style="{StaticResource LableControldStyle}">REPEAT PASSWORD</TextBlock>
+                <PasswordBox x:Name="PasswordSignUpRepeatBox" Grid.Row="11"  Style="{StaticResource SignUpInputControlStyle}" PasswordChanged="PasswordSignUpRepeatBox_PasswordChanged"></PasswordBox>
+                <Button x:Name="SignUpButton"  Grid.Row="12" Style="{StaticResource ButtonSignStyle}" Click="SignUpButton_Click">CREATE AN ACCOUNT</Button>
+                <TextBlock x:Name="BlockAge" Grid.Row="5" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top" Margin="265,6,-197,0"></TextBlock>
+                <TextBlock x:Name="ShortLogin" Grid.Row="7" Style="{StaticResource LableControldStyle}" Height="18" VerticalAlignment="Top" Margin="265,8,-197,0" TextWrapping="Wrap"></TextBlock>
+                <TextBlock x:Name="BlockPas" Grid.Row="9" Style="{StaticResource LableControldStyle}" Margin="265,5,-197,7"></TextBlock>
+                <TextBlock x:Name="BlockRepeat" Grid.Row="11" Style="{StaticResource LableControldStyle}" Margin="265,19,-197,18"></TextBlock>
             </Grid>
         </ScrollViewer>
         <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="91" >
             <TextBlock Style="{StaticResource SignUpTitleControlStyle}" VerticalAlignment="Top" Margin="158,31,158,0">SIGN UP</TextBlock>
         </Grid>
-        
+
     </Grid>
 </UserControl>

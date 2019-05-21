@@ -43,13 +43,17 @@ namespace ComicsMaster
     {
         #region globalParameters
         public SqlConnection sqlConect = null;
-        string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-        public bool flag = false;
-        public string File_image;
-        public string File_rarimage;
         public SqlConnection connect = null;
-        public string category;
-        string IDPARENTCATEGORY;
+        public string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString,
+                      catalog = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+                      File_image,
+                      File_Walpaper,
+                      File_rarimage,
+                      category,
+                      IDPARENTCATEGORY,
+                      Cover,
+                      Walpaper;
+        public bool flag = false;
         #endregion
 
         public ADMINPAGE()
@@ -64,14 +68,33 @@ namespace ComicsMaster
             Nullable<bool> result = openFileDialog.ShowDialog();
             File_image = openFileDialog.FileName;
             if (File_image.Length > 5)
+            {
                 flag = true;
+                string shortFileName = File_image.Substring(File_image.LastIndexOf(".") + 1);
+                File.Copy(File_image, catalog + @"\Temp\Covers\" + title.Text + "." + shortFileName, true);
+                Cover = @"\Temp\Covers\" + title.Text + "." + shortFileName;
+            }
+        }
+        private void Get_walpaper_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            Nullable<bool> result = openFileDialog.ShowDialog();
+            File_Walpaper = openFileDialog.FileName;
+            MessageBox.Show(File_Walpaper);
+            if (File_Walpaper.Length > 5)
+            {
+                flag = true;
+                string shortFileName = File_Walpaper.Substring(File_Walpaper.LastIndexOf(".") + 1);
+                File.Copy(File_Walpaper, catalog + @"\Temp\Walpaper\" + title.Text +"."+ shortFileName, true);
+                Walpaper = @"\Temp\Walpaper\" + title.Text + "." + shortFileName;
+            }
         }
         public string ExtractZipArchive()
         {
             using (ZipFile zip = new ZipFile(File_rarimage))
             {
                 zip.Encryption = EncryptionAlgorithm.WinZipAes256;
-                zip.ExtractAll(@".\Temp", ExtractExistingFileAction.OverwriteSilently);
+                zip.ExtractAll(@".\Temp\" + Group_Copy.Text, ExtractExistingFileAction.OverwriteSilently);
             }
             return File_rarimage + ".rar";
         }
@@ -118,25 +141,25 @@ namespace ComicsMaster
                 connect = new SqlConnection(connectionString);
                 connect.Open();
                 // путь к файлу для загрузки 
-                string filename = File_image;
-                // получаем короткое имя файла для сохранения в бд 
-                string shortFileName = filename.Substring(filename.LastIndexOf('\\') + 1); // массив для хранения бинарных данных файла 
+               // получаем короткое имя файла для сохранения в бд 
+                /*string shortFileName = filename.Substring(filename.LastIndexOf("") + 1);*/ // массив для хранения бинарных данных файла 
 
-                byte[] imageData;
-                using (System.IO.FileStream fs = new System.IO.FileStream(filename, FileMode.Open))
-                {
-                    imageData = new byte[fs.Length];
-                    fs.Read(imageData, 0, imageData.Length);
-                }
+                //byte[] imageData;
+                //using (System.IO.FileStream fs = new System.IO.FileStream(filename, FileMode.Open))
+                //{
+                //    imageData = new byte[fs.Length];
+                //    fs.Read(imageData, 0, imageData.Length);
+                //}
                 string sql = string.Format("Insert Into COMICSCOVER" +
-                "(IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSNAME) Values(@IDPARENTCATEGORY,@ImageData,@Name)");
+                "(IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSNAME) Values(@IDPARENTCATEGORY,@ImageData,@COMICSCOVERWALPAPERTOIESSIE,@Name)");
 
 
                 using (SqlCommand cmd = new SqlCommand(sql, this.connect))
                 {
                     // Добавить параметры 
                     cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", IDPARENTCATEGORY);
-                    cmd.Parameters.AddWithValue("@ImageData", imageData);
+                    cmd.Parameters.AddWithValue("@ImageData", Cover);
+                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", Walpaper);
                     cmd.Parameters.AddWithValue("@Name", title.Text);
                     cmd.ExecuteNonQuery();
                 }
@@ -206,28 +229,28 @@ namespace ComicsMaster
             
                 foreach (ZipEntry entry in files)
                     if (!entry.IsDirectory) {
-                        lst.Add(@".\Temp\" + entry.FileName);
+                        lst.Add(@"/Temp/" + Group_Copy.Text +"/"+ entry.FileName);
                     }
             }
             MessageBox.Show(lst[0]);
             string filename = File_image;
-            byte[] imageData; int j = 0;
+            /*byte[] imageData;*/ int j = 0;
             while( lst!= null)
             {
                 try
                 {
                     if (lst.Safe().Any())
                     {
-                        using (FileStream fs = new FileStream(lst[j], FileMode.Open))
-                        {
-                         imageData = new byte[fs.Length];
-                            fs.Read(imageData, 0, imageData.Length);
-                        }
+                        //using (FileStream fs = new FileStream(lst[j], FileMode.Open))
+                        //{
+                        // imageData = new byte[fs.Length];
+                        //    fs.Read(imageData, 0, imageData.Length);
+                        //}
                         string sql = string.Format("Insert Into IMAGESITEMS" +
                         "(IDPARENTCOMICSITEM,COMICSWALPAPER) Values(@Name,@ImageData)");
                         using (SqlCommand cmd = new SqlCommand(sql, this.connect))
                         {
-                            cmd.Parameters.AddWithValue("@ImageData", imageData);
+                            cmd.Parameters.AddWithValue("@ImageData", lst[j]);
                             cmd.Parameters.AddWithValue("@Name", Group_Copy1.Text);
                             cmd.ExecuteNonQuery();
                         }
@@ -242,9 +265,9 @@ namespace ComicsMaster
             }
                
             connect.Close();
-            DirectoryInfo directoryInfo = new DirectoryInfo(@".\Temp\");
-            foreach (FileInfo file in directoryInfo.GetFiles())
-                file.Delete();
+            //DirectoryInfo directoryInfo = new DirectoryInfo(@".\Temp\");
+            //foreach (FileInfo file in directoryInfo.GetFiles())
+            //    file.Delete();
         }
 
         private void Action_Checked(object sender, RoutedEventArgs e)
