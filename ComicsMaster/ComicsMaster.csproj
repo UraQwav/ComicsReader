@@ -44,6 +44,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.1360, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.6.0-ci1360\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -66,6 +69,7 @@
     </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -90,38 +94,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ADMINPAGE.xaml.cs">
+    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Models\IRepository.cs" />
+    <Compile Include="Page\ADMINPAGE.xaml.cs">
       <DependentUpon>ADMINPAGE.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ComicsPreview.xaml.cs">
+    <Compile Include="Page\ComicsPreview.xaml.cs">
       <DependentUpon>ComicsPreview.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Iessie.xaml.cs">
+    <Compile Include="Page\Iessie.xaml.cs">
       <DependentUpon>Iessie.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Loader.xaml.cs">
+    <Compile Include="Page\Loader.xaml.cs">
       <DependentUpon>Loader.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Recomend.xaml.cs">
-      <DependentUpon>Recomend.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SignUp.xaml.cs">
+    <Compile Include="Page\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl2.xaml.cs">
-      <DependentUpon>UserControl2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControl3.xaml.cs">
-      <DependentUpon>UserControl3.xaml</DependentUpon>
-    </Compile>
-    <Page Include="ADMINPAGE.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ComicImages.xaml">
+    <Page Include="Page\ADMINPAGE.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,15 +119,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ComicsPreview.xaml">
+    <Page Include="Page\ComicsPreview.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Iessie.xaml">
+    <Page Include="Page\Iessie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Loader.xaml">
+    <Page Include="Page\Loader.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,9 +139,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\ComicImages.xaml.cs">
-      <DependentUpon>ComicImages.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ComicMaster.xaml.cs">
       <DependentUpon>ComicMaster.xaml</DependentUpon>
     </Compile>
@@ -159,23 +146,7 @@
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Recomend.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SignUp.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl3.xaml">
+    <Page Include="Page\SignUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -269,10 +240,10 @@
     <Resource Include="images\006.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="loadinfo.net %281%29.gif" />
-    <Resource Include="loadinfo.net %282%29.gif" />
+    <Resource Include="images\loadinfo.net %281%29.gif" />
+    <Resource Include="images\loadinfo.net %282%29.gif" />
     <Resource Include="images\loadinfo.net %283%29.gif" />
-    <Resource Include="loadinfo.net.gif" />
+    <Resource Include="images\loadinfo.net.gif" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\LOADER.gif" />
@@ -289,6 +260,53 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\icons8-error-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-add-to-favorites-100.png" />
+    <Resource Include="images\icons8-favorite-folder-100.png" />
+    <Resource Include="images\icons8-fire-100.png" />
+    <Resource Include="images\icons8-list-100.png" />
+    <Resource Include="images\icons8-search-more-100.png" />
+    <Resource Include="images\icons8-sorting-64.png" />
+    <Resource Include="images\icons8-update-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-update-100 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-opened-folder-100 %281%29.png" />
+    <Resource Include="images\icons8-opened-folder-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-menu-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-menu-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-favorite-folder-filled-50 %281%29.png" />
+    <Resource Include="images\icons8-gas-48.png" />
+    <Resource Include="images\icons8-sorting-52 %281%29.png" />
+    <Resource Include="images\icons8-update-file-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-favorite-folder-filled-50 %282%29.png" />
+    <Resource Include="images\icons8-gas-48 %281%29.png" />
+    <Resource Include="images\icons8-sorting-52 %282%29.png" />
+    <Resource Include="images\icons8-update-file-48 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\icons8-audio-filled-50.png" />
+    <Resource Include="images\icons8-end-48.png" />
+    <Resource Include="images\icons8-no-audio-filled-50.png" />
+    <Resource Include="images\icons8-play-64.png" />
+    <Resource Include="images\icons8-stop-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-audio-filled-50 %281%29.png" />
+    <Resource Include="images\icons8-end-48 %281%29.png" />
+    <Resource Include="images\icons8-no-audio-filled-50 %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

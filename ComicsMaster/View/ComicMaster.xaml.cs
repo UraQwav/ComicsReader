@@ -17,9 +17,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
 using System.Threading;
-using ComicsMaster.View;
 using System.ComponentModel;
-
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 namespace ComicsMaster
 {
     public partial class ComicMaster : Window
@@ -48,7 +48,7 @@ namespace ComicsMaster
              ComicsItemsDo = false;
         string GlobalString = "",
                catalog = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        double timeOpacity = 0.1;
+        double timeOpacity = 0.35;
         Button action = new Button();
         Button adventure = new Button();
         Button horror = new Button();
@@ -57,7 +57,6 @@ namespace ComicsMaster
         Button Mistery = new Button();
         Button historical = new Button();
         Button tragedy = new Button();
-        UserControl2 History = new UserControl2();
         string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         #endregion
         #region LoadDataFunction
@@ -70,25 +69,23 @@ namespace ComicsMaster
             using (SqlConnection connection2 = new SqlConnection(connectionString))
             {
                 connection2.Open();
-                string sql2 = "SELECT * FROM IMAGESITEMS";
+                string sql2 = $"SELECT * FROM IMAGESITEMS WHERE IDPARENTCOMICSITEM = '{ name_Rest1 }'";
                 SqlCommand command2 = new SqlCommand(sql2, connection2);
                 SqlDataReader reader2 = command2.ExecuteReader();
                 while (reader2.Read())
                 {
                     try
                     {
-                        string name_Rest2 = reader2.GetString(1);
-                        if (name_Rest2 == name_Rest1)
-                        {
+                        
                             string data2 = reader2.GetString(2);
                             Image imageSS = new Image();
                             imageSS.Source = new BitmapImage(new Uri("pack://siteoforigin:,,," + data2, UriKind.RelativeOrAbsolute));
-                            imageSS.Width = 812.5;
+                            imageSS.Width = ParentGrid.ActualWidth-10;
                             imageSS.VerticalAlignment = VerticalAlignment.Top;
-                            imageSS.Margin = new Thickness(0, 1260 * ImagesMarginTop, 0, 0);
+                            imageSS.Margin = new Thickness(0, (ParentGrid.ActualWidth/0.64484127) * ImagesMarginTop, 0, 0);
                             ImagesMarginTop++;
                             ContentGridChildren.Children.Add(imageSS);
-                        }
+                        
                     }
                     catch (Exception ex)
                     {
@@ -138,7 +135,7 @@ namespace ComicsMaster
                     using (SqlConnection connection1 = new SqlConnection(connectionString))
                     {
                         connection1.Open();
-                        string sql1 = "SELECT * FROM COMICSCOVERITEM";
+                        string sql1 = $"SELECT * FROM COMICSCOVERITEM WHERE ISSIE='{nameas}'";
                         SqlCommand command1 = new SqlCommand(sql1, connection1);
                         SqlDataReader reader1 = await command1.ExecuteReaderAsync();
                         while (reader1.Read())
@@ -146,8 +143,6 @@ namespace ComicsMaster
                             string nameqw = reader1.GetValue(1).ToString();
                             string name_Rest1 = reader1.GetString(2);
                             GlobalString = name_Rest1;
-                            if (nameqw == nameas)
-                            {
                                 Button button = new Button();
                                 button.Style = (Style)button.FindResource("ButtonSignStyle");
                                 button.Width = 150;
@@ -169,6 +164,7 @@ namespace ComicsMaster
                                 }
                                 button.Click += (sender, e) =>
                                 {
+                                    #region READER_IMAGESITEMS
                                     Content.Children.Clear();
                                     Loader loaderItems = new Loader();
                                     Canvas.SetZIndex(loaderItems, (int)98);
@@ -176,53 +172,9 @@ namespace ComicsMaster
                                     Content.Children.Add(GridAddChild(name_Rest1));
                                     Content.Children.Remove(loaderItems);
                                     ImagesMarginTop = 0;
-                                    #region READER_IMAGESITEMS
-                                    //sqlConect2 = new SqlConnection(connectionString);
-                                    //await sqlConect2.OpenAsync();
-                                    //using (SqlConnection connection2 = new SqlConnection(connectionString))
-                                    //{
-                                    //    connection2.Open();
-                                    //    string sql2 = "SELECT * FROM IMAGESITEMS";
-                                    //    SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                    //    SqlDataReader reader2 = await command2.ExecuteReaderAsync();
-                                    //    while (reader2.Read())
-                                    //    {
-                                    //        try
-                                    //        {
-                                    //            string name_Rest2 = reader2.GetString(1);
-                                    //            if (name_Rest2 == name_Rest1)
-                                    //            {
-                                    //                byte[] data2 = (byte[])reader2.GetValue(2);
-                                    //                MemoryStream ms_2 = new MemoryStream(data2);
-                                    //                System.Drawing.Image newImage_2 = System.Drawing.Image.FromStream(ms_2);
-                                    //                Image imageS = new Image();
-                                    //                BitmapImage bi_2 = new BitmapImage();
-                                    //                bi_2.BeginInit();
-                                    //                MemoryStream ms2_2 = new MemoryStream();
-                                    //                newImage_2.Save(ms2_2, System.Drawing.Imaging.ImageFormat.Jpeg);
-                                    //                ms2_2.Seek(0, SeekOrigin.Begin);
-                                    //                bi_2.StreamSource = ms2_2;
-                                    //                bi_2.EndInit();
-                                    //                imageS.Source = bi_2;
-                                    //                imageS.Width = 812.5;
-                                    //                imageS.VerticalAlignment = VerticalAlignment.Top;
-                                    //                imageS.Margin = new Thickness(0, 1260 * ImagesMarginTop, 0, 0);
-                                    //                ImagesMarginTop++;
-                                    //                Content.Children.Add(imageS);
-                                    //            }
-                                    //        }
-                                    //        catch
-                                    //        {
-                                    //            MessageBox.Show("Erorr");
-                                    //        }
-                                    //    };
-                                    //    connection.Close();
-                                    //}
-                                    //ImagesMarginTop = 0;
                                     #endregion
                                 };
                                 iessie.Content.Children.Add(button);
-                            }
                         };
                         connection1.Close();
                     }
@@ -417,7 +369,208 @@ namespace ComicsMaster
             {
                 addButton.Height = 40;
             }
+            BurgerRecomendR.BeginAnimation(Rectangle.WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, BurgerRecomend.ActualWidth, TimeSpan.FromSeconds(timeOpacity)));
+            try { ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48 (1).png")); } catch { };
+           
         }
+        private void Burger_MouseEnter(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void BurgerRecomend_MouseEnter(object sender, MouseEventArgs e)=> BurgerRecomend.Background = new SolidColorBrush(Color.FromRgb(220,220,220));
+        private void BurgerUpdate_MouseEnter(object sender, MouseEventArgs e) => BurgerUpdate.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
+        private void BurgerFavourite_MouseEnter(object sender, MouseEventArgs e) => BurgerFavourite.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
+        private void BurgerCategory_MouseEnter(object sender, MouseEventArgs e) => BurgerCategory.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
+
+        private void BurgerRecomend_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            #region animation
+            BurgerRecomendR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, BurgerRecomend.ActualWidth, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerUpdateR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerUpdateR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerFavouriteR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerFavouriteR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerCategoryR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerCategoryR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
+            try
+            {
+                ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48 (1).png"));
+                ImageN2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-update-file-48.png"));
+                ImageN4.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-sorting-52 (1).png"));
+                ImageN3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-favorite-folder-filled-50 (1).png"));
+            }
+            catch { }
+            #endregion
+            Content.Children.Clear();
+            LoadDataRecomend().GetAwaiter();
+        }
+        private void BurgerUpdate_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            #region animation
+            BurgerRecomendR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerUpdateR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerUpdateR.ActualWidth, BurgerUpdate.ActualWidth, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerFavouriteR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerFavouriteR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerCategoryR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerCategoryR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
+            try
+            {
+                ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48.png"));
+                ImageN4.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-sorting-52 (1).png"));
+                ImageN3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-favorite-folder-filled-50 (1).png"));
+                ImageN2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-update-file-48 (1).png"));
+            }
+            catch { }
+            #endregion
+        }
+        private void BurgerFavourite_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            #region animation
+            BurgerRecomendR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerUpdateR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerUpdateR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerFavouriteR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerFavouriteR.ActualWidth, BurgerFavourite.ActualWidth, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerCategoryR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerCategoryR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
+            try
+            {
+                ImageN2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-update-file-48.png"));
+                ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48.png"));
+                ImageN4.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-sorting-52 (1).png"));
+                ImageN3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-favorite-folder-filled-50 (2).png"));
+            }
+            catch { }
+            #endregion
+        }
+        private void BurgerCategory_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            #region animation
+            DoubleAnimation recollor1 = new DoubleAnimation();
+            recollor1.From = BurgerRecomendR.ActualWidth;
+            recollor1.To = 0;
+            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity);
+            BurgerRecomendR.BeginAnimation(Rectangle.WidthProperty, recollor1);
+            DoubleAnimation recollor2 = new DoubleAnimation();
+            recollor2.From = BurgerUpdateR.ActualWidth;
+            recollor2.To = 0;
+            recollor2.Duration = TimeSpan.FromSeconds(timeOpacity);
+            BurgerUpdateR.BeginAnimation(Rectangle.WidthProperty, recollor2);
+            DoubleAnimation recollor3 = new DoubleAnimation();
+            recollor3.From = BurgerFavouriteR.ActualWidth;
+            recollor3.To = 0;
+            recollor3.Duration = TimeSpan.FromSeconds(timeOpacity);
+            BurgerFavouriteR.BeginAnimation(Rectangle.WidthProperty, recollor3);
+            DoubleAnimation recollor4 = new DoubleAnimation();
+            recollor4.From = BurgerCategoryR.ActualWidth;
+            recollor4.To = 70;
+            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity);
+            BurgerCategoryR.BeginAnimation(Rectangle.WidthProperty, recollor4);
+            ImageN2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-update-file-48.png"));
+            ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48.png"));
+            ImageN3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-favorite-folder-filled-50 (1).png"));
+
+            ImageN4.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-sorting-52 (2).png"));
+            #endregion
+        }
+
+        private void Burger_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DoubleAnimation recollor4 = new DoubleAnimation();
+            recollor4.From = FullMenu.ActualWidth;
+            recollor4.To = ParentGrid.ActualWidth;
+            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity+0.4);
+            FullMenu.BeginAnimation(Grid.WidthProperty, recollor4);
+            BlackFill.Visibility = Visibility.Visible;
+            DoubleAnimation recollor1 = new DoubleAnimation();
+            recollor1.From = BlackFill.Opacity;
+            recollor1.To = 1;
+            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity+0.4);
+            BlackFill.BeginAnimation(Border.OpacityProperty, recollor1);
+        }
+        private void BurgerRecomend_MouseLeave(object sender, MouseEventArgs e)
+        {
+            BurgerCategory.Background = null;
+            BurgerFavourite.Background = null;
+            BurgerUpdate.Background = null;
+            BurgerRecomend.Background = null;
+        }
+
+        private void BlackFill_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            
+            DoubleAnimation recollor1 = new DoubleAnimation();
+            recollor1.From = BlackFill.Opacity;
+            recollor1.To = 0;
+            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity+0.4);
+            BlackFill.BeginAnimation(Border.OpacityProperty, recollor1);
+            BlackFill.Visibility = Visibility.Hidden;
+            DoubleAnimation recollor4 = new DoubleAnimation();
+            recollor4.From = FullMenu.ActualWidth;
+            recollor4.To = 0;
+            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity+0.4);
+            FullMenu.BeginAnimation(Grid.WidthProperty, recollor4);
+
+        }
+      
+       
+        private void PlayAudio_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var document = WebPlayer.Document as mshtml.HTMLDocument;
+                var inputs = document.getElementsByTagName("button");
+                foreach (mshtml.IHTMLElement element in inputs)
+                {
+                    if (element.getAttribute("className") == "ytp-play-button ytp-button")
+                    {
+                        element.click();
+                    }
+                }
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
+
+        private void WebPlayer_LoadCompleted(object sender, NavigationEventArgs e)
+        {
+          
+        }
+
+        private void VolumAudio_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var document = WebPlayer.Document as mshtml.HTMLDocument;
+                var inputs = document.getElementsByTagName("button");
+                foreach (mshtml.IHTMLElement element in inputs)
+                {
+                    if (element.getAttribute("className") == "ytp-mute-button ytp-button")
+                    {
+                        element.click();
+                    }
+                }
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
+
+        private void NextAudio_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                var document = WebPlayer.Document as mshtml.HTMLDocument;
+                var inputs = document.getElementsByTagName("a");
+                foreach (mshtml.IHTMLElement element in inputs)
+                {
+                    if (element.getAttribute("className") == "ytp-next-button ytp-button")
+                    {
+                        element.click();
+                    }
+                }
+            }
+            catch(Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
+
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (this.WindowState == WindowState.Normal)
@@ -679,7 +832,6 @@ namespace ComicsMaster
             BrowserBackground.BeginAnimation(Border.OpacityProperty, recollor6);
             #endregion
             Content.Children.Clear();
-            Content.Children.Add(History);
         }
         private void FavouritesButton2_Click(object sender, RoutedEventArgs e)
         {

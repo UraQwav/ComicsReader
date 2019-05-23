@@ -29,6 +29,13 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ShadowGridUp" TargetType="Grid">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Direction="90" BlurRadius="15" Opacity="0.1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="SignUploginBackground" TargetType="Grid">
             <Setter Property="Background">
                 <Setter.Value>

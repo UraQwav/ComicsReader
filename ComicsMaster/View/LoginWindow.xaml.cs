@@ -4,6 +4,8 @@ using System.Windows;
 using System.Windows.Media.Animation;
 using System.Windows.Controls;
 using System.Windows.Media;
+using ComicsMaster.Models;
+
 namespace ComicsMaster
 {
     #region GlobalClass
@@ -21,27 +23,17 @@ namespace ComicsMaster
         #region GlobalParametrs
         bool flagSignUp = true;
         public SqlConnection sqlConect = null;
-        string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        Repository repository;
         #endregion
         public LoginWindow()
         {
             InitializeComponent();
-            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            repository = new Repository();
         }
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            sqlConect = new SqlConnection(connectionString);
-            int sqlrezult;
-                sqlConect.Open();
-                string sq1 = string.Format("SELECT COUNT(*) from LOGINANDPASSWORD WHERE" + "( LOGINS=" + "@LOG" + " AND PASSWORDS= " + "@PAS)");
-                using (SqlCommand cmd = new SqlCommand(sq1, this.sqlConect))
-                {
-                    cmd.Parameters.AddWithValue("@LOG", LoginBox.Text);
-                    cmd.Parameters.AddWithValue("@PAS", PasswordBox.Password.GetHashCode());
-                    sqlrezult = (int)cmd.ExecuteScalar();
-                }
-                sqlConect.Close();
-            if (sqlrezult == 1)
+            if (repository.FindUser(LoginBox.Text, PasswordBox.Password) == 1)
             {
                 NameSignIN.flag = LoginBox.Text;
                 ComicMaster comicMaster = new ComicMaster();

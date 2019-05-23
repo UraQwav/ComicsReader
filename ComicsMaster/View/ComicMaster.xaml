@@ -10,16 +10,61 @@
         Icon="/ComicsMaster;component/images/icons8-grey-48.png"
         Title="ComicMaster" Height="700" Width="1130"
         WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}">
-
-
     <Grid x:Name="Shadow" Style="{StaticResource ComicMasterBackground}" Margin="10,10,10,10">
         <Grid Height="55" VerticalAlignment="Top">
             <Border Background="DarkRed"></Border>
         </Grid>
-        <Grid>
-            <ScrollViewer Margin="0,0,825,0">
+        <Grid x:Name="ParentGrid" Margin="0,25,0,0" Background="#FFEAEAEA">
+            <ScrollViewer>
+                <Grid x:Name="Content" Margin="20,0,0,0"/>
+            </ScrollViewer>
+            <Grid x:Name="BurgerGridMenu" Style="{StaticResource ShadowGridUp}" VerticalAlignment="Bottom" Height="40" Background="White">
+                <Grid.ColumnDefinitions>
+                   
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="BurgerRecomend" Grid.Column="0"  MouseDown="BurgerRecomend_MouseDown"  MouseEnter="BurgerRecomend_MouseEnter" MouseLeave="BurgerRecomend_MouseLeave" >
+                    <Image x:Name="ImageN1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="25" Source="/ComicsMaster;component/images/icons8-gas-48.png" ></Image>
+                    <Rectangle x:Name="BurgerRecomendR" Height="3" Width="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Fill="DarkRed" ></Rectangle>
+                </Grid>
+                <Grid x:Name="BurgerUpdate" Grid.Column="1" MouseEnter="BurgerUpdate_MouseEnter" MouseLeave="BurgerRecomend_MouseLeave" MouseDown="BurgerUpdate_MouseDown">
+                    <Image x:Name="ImageN2" VerticalAlignment="Center" HorizontalAlignment="Center" Width="25" Source="/ComicsMaster;component/images/icons8-update-file-48.png"></Image>
+                    <Rectangle x:Name="BurgerUpdateR" Height="3" Width="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Fill="DarkRed" ></Rectangle>
+                </Grid>
+                <Grid x:Name="BurgerMusic" Grid.Column="2">
+                    <Image x:Name="VolumAudio" Width="25" Margin="65,0,0,0" HorizontalAlignment="Left" Source="/ComicsMaster;component/images/icons8-audio-filled-50 (1).png" MouseDown="VolumAudio_MouseDown"></Image>
+                    <Image x:Name="PlayAudio" MouseDown="PlayAudio_MouseDown" HorizontalAlignment="Center" Source="/ComicsMaster;component/images/icons8-play-64.png" Margin="156,-22,156,4" ></Image>
+                    <Image x:Name="NextAudio" Width="35" Margin="0,0,65,0" HorizontalAlignment="Right" Source="/ComicsMaster;component/images/icons8-end-48 (1).png" MouseDown="NextAudio_MouseDown"></Image>
+                    <Rectangle  Width="3" Height="40" VerticalAlignment="Center" HorizontalAlignment="Left" Fill="DarkRed" ></Rectangle>
+                    <Rectangle  Width="3" Height="40" VerticalAlignment="Center" HorizontalAlignment="Right" Fill="DarkRed" ></Rectangle>
+                </Grid>
+                <Grid x:Name="BurgerFavourite" Grid.Column="3" MouseEnter="BurgerFavourite_MouseEnter" MouseLeave="BurgerRecomend_MouseLeave" MouseDown="BurgerFavourite_MouseDown">
+                    <Image x:Name="ImageN3" VerticalAlignment="Center" HorizontalAlignment="Center" Width="25" Source="/ComicsMaster;component/images/icons8-favorite-folder-filled-50 (1).png"></Image>
+                    <Rectangle x:Name="BurgerFavouriteR" Height="3" Width="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Fill="DarkRed" ></Rectangle>
+                </Grid>
+                <Grid x:Name="BurgerCategory" Grid.Column="4" MouseEnter="BurgerCategory_MouseEnter" MouseLeave="BurgerRecomend_MouseLeave" MouseDown="Burger_MouseDown">
+                    <Image x:Name="ImageN4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="25" Source="/ComicsMaster;component/images/icons8-sorting-52 (1).png" ></Image>
+                    <Rectangle x:Name="BurgerCategoryR" Height="3" Width="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Fill="DarkRed" ></Rectangle>
+                </Grid>
+                
+            </Grid>
+            <Grid x:Name="HeaderMenu" VerticalAlignment="Top" Height="0" Background="DarkRed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Grid>
+        <Grid x:Name="FullMenu" Width="0" HorizontalAlignment="Left">
+            <ScrollViewer  HorizontalAlignment="Left" Background="{x:Null}">
                 <Grid Width="262" HorizontalAlignment="Left" Background="DarkRed">
-
                     <Grid.RowDefinitions>
                         <RowDefinition Height="23"></RowDefinition>
                         <RowDefinition Height="auto"></RowDefinition>
@@ -38,7 +83,6 @@
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-
                     <Image x:Name="UserImage" Grid.Row="1" Source="/ComicsMaster;component/images/16204260.jpg" Margin="1,1,1,1"></Image>
                     <Border Grid.Row="1" Grid.RowSpan="16"  Background="Black" Opacity="0.2"></Border>
                     <Button x:Name="ChangeUserImage" Style="{StaticResource ButtonUserLoginImages}" Grid.Row="1" Height="36"  Margin="112,204,-32,9" Click="ChangeUserImage_Click">Choose your Image _</Button>
@@ -87,16 +131,8 @@
                 </Grid>
             </ScrollViewer>
         </Grid>
-        <Grid Margin="262,25,0,0" Background="White">
-            <Border Background="Black" Opacity="0.05"/>
-            <ScrollViewer>
-                <Grid x:Name="Content">
-
-                    <Image x:Name="imBackGround" GIF:AnimationBehavior.SourceUri="/Images/loadinfo.net(3).gif" Width="50" Height="50"/>
-
-                </Grid>
-            </ScrollViewer>
-           
+        <Grid x:Name="BlackFill" Visibility="Hidden" Opacity="0" MouseDown="BlackFill_MouseDown" Margin="261,25,0,0">
+            <Border Background="Black" Opacity="0.45"></Border>
         </Grid>
         <Grid VerticalAlignment="Top" Height="25" MouseDown="Grid_MouseDown" >
             <Border x:Name="NavigationPanel" Background="Black" Opacity=".5"></Border>
@@ -104,5 +140,7 @@
             <Button Style="{StaticResource ButtonLoginMin}" Height="15" Width="15" HorizontalAlignment="Left" Margin="35,5,5,5" Background="DarkOrange" Click="Button_Click_1"></Button>
             <Button Style="{StaticResource ButtonLoginMax}" Height="15" Width="15" HorizontalAlignment="Left" Margin="60,5,5,5" Background="DarkOrange" Click="Button_Click_2"></Button>
         </Grid>
+        <WebBrowser x:Name="WebPlayer" Width="0" LoadCompleted="WebPlayer_LoadCompleted" VerticalAlignment="Top"  Source="https://www.youtube.com/watch?v=nGr4ZpHRmh4" Margin="0,55,0,64"></WebBrowser>
+
     </Grid>
 </Window>
