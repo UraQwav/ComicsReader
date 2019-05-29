@@ -9,24 +9,32 @@
              FontSize="14"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label Margin="172,83,346,340">NAME COMICS</Label>
+        <Label Margin="292,91,226,332">NAME COMICS</Label>
         <Label Margin="172,166,346,257">NUMBER COMICS</Label>
         <Label Margin="450,167,106,256">COMICS ISSIE</Label>
-        <RadioButton x:Name="Action"  Margin="381,54,252,367" Checked="Action_Checked">ACTION</RadioButton>
+        <RadioButton x:Name="Action"  Margin="475,54,158,367" Checked="Action_Checked">ACTION</RadioButton>
         <RadioButton  x:Name="Adventure"  Margin="163,25,535,396" Checked="Adventure_Checked">ADVENTURE</RadioButton>
         <RadioButton x:Name="Comedy"  Margin="287,25,424,396" Checked="Comedy_Checked">COMEDY</RadioButton>
         <RadioButton x:Name="Historical"  Margin="381,25,315,396" Checked="Historical_Checked">HISTORICAL</RadioButton>
         <RadioButton x:Name="Horor"  Margin="490,25,237,396" Checked="Horor_Checked">HOROR</RadioButton>
         <RadioButton x:Name="Mistery"  Margin="568,25,65,396" Checked="Mistery_Checked">MISTERY</RadioButton>
-        <RadioButton x:Name="Demons"  Margin="163,54,535,367" Checked="Demons_Checked">DEMONS</RadioButton>
-        <RadioButton x:Name="Tragedy"  Margin="287,54,424,367" Checked="Tragedy_Checked">TRAGEDY</RadioButton>
-        <TextBox x:Name="title" Margin="170,123,415,297"/>
-        <Button x:Name="images" Margin="426,123,237,297" Click="Get_image_Click" Style="{StaticResource ButtonSignStyle}">COMICS COVER</Button>
-        <Button x:Name="imagesWalpaper" Margin="598,123,65,297" Click="Get_walpaper_Click" Style="{StaticResource ButtonSignStyle}">COMICS WALPAPER</Button>
-        <TextBox x:Name="Group" Margin="172,207,415,213"/> 
-        <Button x:Name="imagesGroup" Margin="190,293,461,127" Click="Get_image1_Click" Style="{StaticResource ButtonSignStyle}">COMICS IMAGE</Button>
-        <Button x:Name="addGroupimages" Margin="340,366,302,54" Click="Button3_Click" Style="{StaticResource ButtonSignStyle}">SEND</Button>
+        <RadioButton x:Name="Demons"  Margin="257,54,441,367" Checked="Demons_Checked">DEMONS</RadioButton>
+        <RadioButton x:Name="Tragedy"  Margin="381,54,330,367" Checked="Tragedy_Checked">TRAGEDY</RadioButton>
+        <TextBox x:Name="title" Margin="292,123,293,297"/>
+        <Button x:Name="images" Margin="332,288,331,132" Click="Get_image_Click" Style="{StaticResource ButtonSignStyle}">COMICS COVER</Button>
+        <Button x:Name="imagesWalpaper" Margin="512,288,151,132" Click="Get_walpaper_Click" Style="{StaticResource ButtonSignStyle}">COMICS WALPAPER</Button>
+        <TextBox x:Name="Group" Margin="150,207,437,213" RenderTransformOrigin="0.352,0.672"/>
+        <Button x:Name="imagesGroup" Margin="150,288,501,132" Click="Get_image1_Click" Style="{StaticResource ButtonSignStyle}">COMICS IMAGE</Button>
         <TextBox x:Name="Group_Copy" Margin="450,207,149,213"/>
-        <TextBox x:Name="Group_Copy1" Margin="450,293,149,127"/>
+        <Grid Margin="150,340,149,0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="DescriptionComics"></TextBox>
+            <Button Grid.Row="1" x:Name="addGroupimages"  Click="Button3_Click" Style="{StaticResource ButtonSignStyle}" Margin="186,13,185,12">SEND</Button>
+        </Grid>
+        
+    
     </Grid>
 </UserControl>

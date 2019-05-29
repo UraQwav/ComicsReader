@@ -17,6 +17,20 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="SphereShadowImage" TargetType="Image">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="5" Opacity="0.25"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SphereShadowGrid" TargetType="Grid">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="5" Opacity="0.25"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="MastersBackground" TargetType="Grid">
             <Setter Property="Background">
                 <Setter.Value>
@@ -33,6 +47,13 @@
             <Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect Direction="90" BlurRadius="15" Opacity="0.1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ShadowGridDown" TargetType="Grid">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Direction="270" BlurRadius="5" Opacity="0.2"/>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -114,6 +135,18 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="ScrollBarThumbStyle1" TargetType="{x:Type Thumb}">
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Margin" Value="1,0,2,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Rectangle Fill="#FF4F0808" RadiusX="4" RadiusY="4" Width="0" Margin="1"></Rectangle>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <ControlTemplate x:Key="VerticalScrollBar" TargetType="{x:Type ScrollBar}">
             <Grid>
                 <Grid.RowDefinitions>
@@ -140,6 +173,7 @@
         <Style TargetType="{x:Type ScrollBar}">
             <Setter Property="Template" Value="{StaticResource VerticalScrollBar}"/>
         </Style>
+       
         <Style x:Key="ComicMasterBackground" TargetType="Grid">
             <Setter Property="Effect">
                 <Setter.Value>
@@ -148,11 +182,11 @@
             </Setter>
         </Style>
         <Style x:Key="ComicsPreview" TargetType="Grid">
-            <!--<Setter Property="Effect">
+            <Setter Property="Effect">
                 <Setter.Value>
-                    <DropShadowEffect Color="Gray" ShadowDepth="8" BlurRadius="15"/>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="5" Opacity="0.25"/>
                 </Setter.Value>
-            </Setter>-->
+            </Setter>
         </Style>
         <Style x:Key="TitleControlStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
@@ -300,6 +334,48 @@
             <Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect ShadowDepth="2"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonComicsIssieStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,25,0,15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="#FFFBFBFB">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="5" Opacity="0.25"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonComicsIssieStylefirst" TargetType="Button">
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,25,0,15"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="DarkRed">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="5" Opacity="0.25"/>
                 </Setter.Value>
             </Setter>
         </Style>

@@ -20,6 +20,8 @@ using System.Threading;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using ComicsMaster.Page;
+
 namespace ComicsMaster
 {
     public partial class ComicMaster : Window
@@ -31,35 +33,136 @@ namespace ComicsMaster
              LeftMarginCover = 0, 
              TopMarginCover = 0;
         Grid GridComics = new Grid();
+        bool firstbutton = true;
+        string nameas;
+        string name_kategory;
+        string data;
+        string data2;
+        string name_Rest;
+        string DiscriptionComics;
         public SqlConnection sqlConect = null;
         public SqlConnection sqlConect1 = null;
         public SqlConnection sqlConect2 = null;
         public SqlConnection sqlconect3 = null;
         public SqlConnection sqlConect4 = null;
         public SqlConnection sqlConect5 = null;
-        bool act = false,
-             adv = false,
-             hor = false,
-             com = false,
-             dem = false,
-             mis = false,
-             his = false,
-             tra = false,
-             ComicsItemsDo = false;
+        bool ComicsItemsDo = false;
         string GlobalString = "",
+            one, two,thr,four,five,six,
                catalog = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         double timeOpacity = 0.35;
-        Button action = new Button();
-        Button adventure = new Button();
-        Button horror = new Button();
-        Button comedy = new Button();
-        Button demons = new Button();
-        Button Mistery = new Button();
-        Button historical = new Button();
-        Button tragedy = new Button();
+        Button actionButton = new Button();
+        Button adventureButton = new Button();
+        Button horrorButton = new Button();
+        Button comedyButton = new Button();
+        Button demonsButton = new Button();
+        Button MisteryButton = new Button();
+        Button historicalButton = new Button();
+        Button tragedyButton = new Button();
         string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         #endregion
         #region LoadDataFunction
+        public void ButtonMenuCreateAnimation(Border rectangle)
+        {
+            if (rectangle == RecommendationBackground)
+            {
+                RecommendationBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(RecommendationBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
+                LatestUpdateBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(LatestUpdateBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+            }
+            if (rectangle == LatestUpdateBackground)
+            {
+                RecommendationBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(RecommendationBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                LatestUpdateBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(LatestUpdateBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
+                CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+            }
+            if (rectangle == CategoryBackground)
+            {
+                RecommendationBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(RecommendationBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                LatestUpdateBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(LatestUpdateBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
+                HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+            }
+            if (rectangle == HistoryBackground)
+            {
+                RecommendationBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(RecommendationBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                LatestUpdateBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(LatestUpdateBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
+                FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+            }
+            if (rectangle == FavouritesBackground)
+            {
+                RecommendationBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(RecommendationBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                LatestUpdateBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(LatestUpdateBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
+                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+            }
+            if (rectangle == SettingsBackground)
+            {
+                RecommendationBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(RecommendationBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                LatestUpdateBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(LatestUpdateBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
+                BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+            }
+            if (rectangle == BrowserBackground)
+            {
+                RecommendationBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(RecommendationBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                LatestUpdateBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(LatestUpdateBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
+                addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+            }
+            if (rectangle == addBackground)
+            {
+                RecommendationBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(RecommendationBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                LatestUpdateBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(LatestUpdateBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
+                addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
+            }
+        }
+        public void CreateButtonCategory(Button button, string buttonContent)
+        {
+            button.Style= (Style)button.FindResource("ButtonSignStyle");
+            button.VerticalAlignment = VerticalAlignment.Top;
+            button.HorizontalAlignment = HorizontalAlignment.Left;
+            button.Width = 100;
+            button.Height = 30;
+            button.Content = buttonContent;
+            button.Click += (source, t) => { Content.Children.Clear(); LoadDataCategory(button).GetAwaiter();};
+        }
         public System.Windows.UIElement GridAddChild(string name_Rest1)
         {
             Grid ContentGridChildren = new Grid();
@@ -72,20 +175,21 @@ namespace ComicsMaster
                 string sql2 = $"SELECT * FROM IMAGESITEMS WHERE IDPARENTCOMICSITEM = '{ name_Rest1 }'";
                 SqlCommand command2 = new SqlCommand(sql2, connection2);
                 SqlDataReader reader2 = command2.ExecuteReader();
+                int Row = 0;
+                ContentGridChildren.RowDefinitions.Clear();
                 while (reader2.Read())
                 {
                     try
                     {
-                        
-                            string data2 = reader2.GetString(2);
-                            Image imageSS = new Image();
-                            imageSS.Source = new BitmapImage(new Uri("pack://siteoforigin:,,," + data2, UriKind.RelativeOrAbsolute));
-                            imageSS.Width = ParentGrid.ActualWidth-10;
-                            imageSS.VerticalAlignment = VerticalAlignment.Top;
-                            imageSS.Margin = new Thickness(0, (ParentGrid.ActualWidth/0.64484127) * ImagesMarginTop, 0, 0);
-                            ImagesMarginTop++;
-                            ContentGridChildren.Children.Add(imageSS);
-                        
+                        ContentGridChildren.RowDefinitions.Add(new RowDefinition { Height =GridLength.Auto});
+                        string data2 = reader2.GetString(2);
+                        Image imageSS = new Image();
+                        imageSS.Source = new BitmapImage(new Uri("pack://siteoforigin:,,," + data2, UriKind.RelativeOrAbsolute));
+                        imageSS.VerticalAlignment = VerticalAlignment.Top;
+                        imageSS.Margin = new Thickness(0, 0, 0, 20);
+                        Grid.SetRow(imageSS,Row);
+                        ContentGridChildren.Children.Add(imageSS);
+                        Row++;
                     }
                     catch (Exception ex)
                     {
@@ -95,6 +199,18 @@ namespace ComicsMaster
                 connection2.Close();
                 ComicsItemsDo = true;
                 return ContentGridChildren;
+            }
+        }
+        #endregion
+        #region CLASS
+        public class InternetChecker
+        {
+            [System.Runtime.InteropServices.DllImport("wininet.dll")]
+            private extern static bool InternetGetConnectedState(out int Description, int ReservedValue);
+            public static bool IsConnectedToInternet()
+            {
+                int Desc;
+                return InternetGetConnectedState(out Desc, 0);
             }
         }
         #endregion
@@ -115,27 +231,32 @@ namespace ComicsMaster
                 SqlDataReader reader = await command.ExecuteReaderAsync();
                 while (reader.Read())
                 {
-                    string nameas = reader.GetValue(0).ToString();
-                    string name_kategory = reader.GetString(1);
-                    string data = reader.GetString(2);
-                    string data2 = reader.GetString(3);
-                    string name_Rest = reader.GetString(4);
+                    nameas = reader.GetValue(0).ToString();
+                    name_kategory = reader.GetString(1);
+                    data = reader.GetString(2);
+                    data2 = reader.GetString(3);
+                    DiscriptionComics = reader.GetString(4);
+                    name_Rest = reader.GetString(5);
                     ComicsPreview comicsPreview = new ComicsPreview();
-                    Iessie iessie = new Iessie();
-                    iessie.Margin = new Thickness(10, 10, 10, 10);
-                    iessie.Content.HorizontalAlignment = HorizontalAlignment.Center;
-                    comicsPreview.ComicsWalpeper.Source = new BitmapImage(new Uri(catalog + data));
+                    Iessie iessie = new Iessie(Convert.ToInt32(nameas), name_kategory, data, data2);
+
+                    iessie.Margin = new Thickness(0, 0, 0, 0);
+                    iessie.ComicsDiscription.Text = DiscriptionComics;
+                    iessie.ComicsName.Text = name_Rest;
+                    //iessie.Content.HorizontalAlignment = HorizontalAlignment.Center;
+                    comicsPreview.ComicsWalpeper.Source = new BitmapImage(new Uri(catalog+data));
                     comicsPreview.NameComix.Text = name_Rest;
                     comicsPreview.NameGlavaComix.Text = name_kategory;
                     #region IESSIE_ADD_BUTTON
                     int buttonMarginLeft = 0,
-                        buttonMarginTop = 1;
+                        buttonMarginTop = 0;
                     sqlConect1 = new SqlConnection(connectionString);
                     await sqlConect1.OpenAsync();
+                    var image = new Image { Source = new BitmapImage(new Uri(catalog + data2)) };
                     using (SqlConnection connection1 = new SqlConnection(connectionString))
                     {
                         connection1.Open();
-                        string sql1 = $"SELECT * FROM COMICSCOVERITEM WHERE ISSIE='{nameas}'";
+                        string sql1 = "SELECT * FROM COMICSCOVERITEM";
                         SqlCommand command1 = new SqlCommand(sql1, connection1);
                         SqlDataReader reader1 = await command1.ExecuteReaderAsync();
                         while (reader1.Read())
@@ -143,45 +264,109 @@ namespace ComicsMaster
                             string nameqw = reader1.GetValue(1).ToString();
                             string name_Rest1 = reader1.GetString(2);
                             GlobalString = name_Rest1;
+                            if (nameqw == nameas)
+                            {
                                 Button button = new Button();
-                                button.Style = (Style)button.FindResource("ButtonSignStyle");
-                                button.Width = 150;
-                                button.Height = 40;
-                                button.HorizontalAlignment = HorizontalAlignment.Left;
+                               
                                 button.Content = name_Rest1;
-                                if (WidthGridForbutton < 800)
+                                button.Margin = new Thickness(10, 5, 10, 5);
+                                button.Height = 50;
+                                if (buttonMarginLeft < 4)
                                 {
-                                    button.Margin = new Thickness(buttonMarginLeft * 160, 150 * buttonMarginTop, 0, 0);
-                                    buttonMarginLeft++;
-                                    WidthGridForbutton = buttonMarginLeft * 160;
+                                    if (firstbutton) {
+                                        Grid.SetRow(button, buttonMarginTop);
+                                        Grid.SetColumn(button, buttonMarginLeft);
+                                        WidthGridForbutton++;
+                                        buttonMarginLeft++;
+                                        button.Background = Brushes.DarkRed;
+                                        button.Foreground = Brushes.White;
+                                        firstbutton = false;
+                                        button.Style = (Style)button.FindResource("ButtonComicsIssieStylefirst");
+                                    }
+                                    else {
+                                        button.Style = (Style)button.FindResource("ButtonComicsIssieStyle");
+                                        Grid.SetRow(button, buttonMarginTop);
+                                        Grid.SetColumn(button, buttonMarginLeft);
+                                        WidthGridForbutton++;
+                                        buttonMarginLeft++;
+                                    }
+                                    
                                 }
-                                if (WidthGridForbutton >= 800)
+                                else
                                 {
-                                    buttonMarginLeft = 0; buttonMarginTop++;
-                                    button.Margin = new Thickness(buttonMarginLeft * 160, 150 * buttonMarginTop, 0, 0);
-                                    buttonMarginLeft++;
+                                    button.Style = (Style)button.FindResource("ButtonComicsIssieStyle");
                                     WidthGridForbutton = 0;
+                                    iessie.ContentForButton.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                                    buttonMarginLeft = 0; buttonMarginTop++;
+                                    Grid.SetRow(button, buttonMarginTop);
+                                    Grid.SetColumn(button, buttonMarginLeft);
+                                    buttonMarginLeft++;
+                                    
                                 }
                                 button.Click += (sender, e) =>
                                 {
-                                    #region READER_IMAGESITEMS
                                     Content.Children.Clear();
+                                    ContentToIessie.Children.Clear();
+                                    BackgroundIessie.Children.Clear();
                                     Loader loaderItems = new Loader();
                                     Canvas.SetZIndex(loaderItems, (int)98);
                                     Content.Children.Add(loaderItems);
+                                    BackgroundIessie.Children.Remove(image);
                                     Content.Children.Add(GridAddChild(name_Rest1));
                                     Content.Children.Remove(loaderItems);
                                     ImagesMarginTop = 0;
-                                    #endregion
                                 };
-                                iessie.Content.Children.Add(button);
+                                iessie.ContentForButton.Children.Add(button);
+                            }
                         };
                         connection1.Close();
                     }
-                    buttonMarginTop = 1; buttonMarginLeft = 0;
+                    buttonMarginTop = 0; buttonMarginLeft = 0; firstbutton = true;
                     #endregion
-                    iessie.TitleImages.Source = new BitmapImage(new Uri(catalog + data2));
-                    comicsPreview.ButtonGrid.MouseDown += (source, e) => { Content.Children.Clear(); Content.Children.Add(iessie); };
+                    iessie.backImage.MouseDown += (sen, t) => { Content.Children.Clear(); ContentToIessie.Children.Clear(); BackgroundIessie.Children.Clear(); LoadDataLatestUpdate().GetAwaiter(); };
+                    comicsPreview.ButtonGrid.MouseDown += (source, e) => {
+                        Content.Children.Clear();
+                        ContentToIessie.Children.Clear();
+                        ContentToIessie.Children.Add(iessie);
+                        BackgroundIessie.Children.Add(image);
+                        try
+                        {
+                            var str = NameSignIN.flag;
+                            var sqlConectHistory = new SqlConnection(connectionString);
+                            int sqlrezult;
+                            sqlConectHistory.Open();
+                            string sq1 = string.Format("SELECT COUNT(*) from HISTORY WHERE" + "( IDHISTORYCOMICS=" + "@LOG)");
+                            using (SqlCommand cmd = new SqlCommand(sq1, sqlConectHistory))
+                            {
+                                cmd.Parameters.AddWithValue("@LOG", name_Rest);
+                                sqlrezult = (int)cmd.ExecuteScalar();
+                            }
+                            sqlConect.Close();
+                            if (sqlrezult < 1)
+                            {
+                                var connectHistory = new SqlConnection(connectionString);
+                                connectHistory.Open();
+                                string sqlQ = string.Format("Insert Into HISTORY(IDUSERLOGIN,IDHISTORYCOMICS,IDCOMICSCOVER,IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSDISCRIPTION) Values(@IDUSERLOGIN,@IDHISTORYCOMICS,@IDCOMICSCOVER,@IDPARENTCATEGORY,@COMICSCOVERWALPAPER,@COMICSCOVERWALPAPERTOIESSIE,@COMICSDISCRIPTION)");
+                                using (SqlCommand cmd = new SqlCommand(sqlQ, connectHistory))
+                                {
+                                    cmd.Parameters.AddWithValue("@IDUSERLOGIN", str);
+                                    cmd.Parameters.AddWithValue("@IDHISTORYCOMICS", name_Rest);
+                                    cmd.Parameters.AddWithValue("@IDCOMICSCOVER", nameas);
+                                    cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", name_kategory);
+                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPER", data);
+                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", data2);
+                                    cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", iessie.ComicsDiscription.Text);
+                                    cmd.ExecuteNonQuery();
+                                }
+                                connectHistory.Close();
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Error");
+                        }
+
+                    };
                     if (WidthGrid < (int)Content.ActualWidth)
                     {
                         comicsPreview.Margin = new Thickness(LeftMarginCover * 184, 320 * TopMarginCover, 0, 0);
@@ -204,7 +389,7 @@ namespace ComicsMaster
             }
             Content.Children.Remove(loader);
         }
-        private async Task LoadDataRecomend()
+        private async Task LoadDataHistory()
         {
             Loader loader = new Loader();
             Canvas.SetZIndex(loader, (int)98);
@@ -212,31 +397,38 @@ namespace ComicsMaster
             Content.Children.Add(loader);
             sqlConect = new SqlConnection(connectionString);
             await sqlConect.OpenAsync();
+            var strLogin = NameSignIN.flag;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string sql = "SELECT * FROM COMICSCOVER";
+                string sql = $"SELECT * FROM HISTORY WHERE IDUSERLOGIN='{strLogin}'";
                 SqlCommand command = new SqlCommand(sql, connection);
                 SqlDataReader reader = await command.ExecuteReaderAsync();
                 while (reader.Read())
                 {
-                    string nameas = reader.GetValue(0).ToString();
-                    string name_kategory = reader.GetString(1);
-                    string data = reader.GetString(2);
-                    string data2 = reader.GetString(3);
-                    string name_Rest = reader.GetString(4);
+                    string name_Rest = reader.GetString(2);
+                    string nameas = reader.GetValue(3).ToString();
+                    string name_kategory = reader.GetString(4);
+                    string data = reader.GetString(5);
+                    string data2 = reader.GetString(6);
+                    try { string DiscriptionComics = reader.GetString(7); }
+                    catch { string DiscriptionComics = "It's very funny commics and I recommend you read it"; }
                     ComicsPreview comicsPreview = new ComicsPreview();
-                    Iessie iessie = new Iessie();
-                    iessie.Margin = new Thickness(10, 10, 10, 10);
-                    iessie.Content.HorizontalAlignment = HorizontalAlignment.Center;
-                    comicsPreview.ComicsWalpeper.Source = new BitmapImage(new Uri(catalog+data));
+                    Iessie iessie = new Iessie(Convert.ToInt32(nameas), name_kategory, data, data2);
+
+                    iessie.Margin = new Thickness(0, 0, 0, 0);
+                    iessie.ComicsDiscription.Text = DiscriptionComics;
+                    iessie.ComicsName.Text = name_Rest;
+                    //iessie.Content.HorizontalAlignment = HorizontalAlignment.Center;
+                    comicsPreview.ComicsWalpeper.Source = new BitmapImage(new Uri(catalog + data));
                     comicsPreview.NameComix.Text = name_Rest;
                     comicsPreview.NameGlavaComix.Text = name_kategory;
                     #region IESSIE_ADD_BUTTON
                     int buttonMarginLeft = 0,
-                        buttonMarginTop = 1;
+                        buttonMarginTop = 0;
                     sqlConect1 = new SqlConnection(connectionString);
                     await sqlConect1.OpenAsync();
+                    var image = new Image { Source = new BitmapImage(new Uri(catalog + data2)) };
                     using (SqlConnection connection1 = new SqlConnection(connectionString))
                     {
                         connection1.Open();
@@ -251,87 +443,505 @@ namespace ComicsMaster
                             if (nameqw == nameas)
                             {
                                 Button button = new Button();
-                                button.Style = (Style)button.FindResource("ButtonSignStyle");
-                                button.Width = 150;
-                                button.Height = 40;
-                                button.HorizontalAlignment = HorizontalAlignment.Left;
+
                                 button.Content = name_Rest1;
-                                if (WidthGridForbutton < 800)
+                                button.Margin = new Thickness(10, 5, 10, 5);
+                                button.Height = 50;
+                                if (buttonMarginLeft < 4)
                                 {
-                                    button.Margin = new Thickness(buttonMarginLeft * 160, 150 * buttonMarginTop, 0, 0);
-                                    buttonMarginLeft++;
-                                    WidthGridForbutton = buttonMarginLeft * 160;
+                                    if (firstbutton)
+                                    {
+                                        Grid.SetRow(button, buttonMarginTop);
+                                        Grid.SetColumn(button, buttonMarginLeft);
+                                        WidthGridForbutton++;
+                                        buttonMarginLeft++;
+                                        button.Background = Brushes.DarkRed;
+                                        button.Foreground = Brushes.White;
+                                        firstbutton = false;
+                                        button.Style = (Style)button.FindResource("ButtonComicsIssieStylefirst");
+                                    }
+                                    else
+                                    {
+                                        button.Style = (Style)button.FindResource("ButtonComicsIssieStyle");
+                                        Grid.SetRow(button, buttonMarginTop);
+                                        Grid.SetColumn(button, buttonMarginLeft);
+                                        WidthGridForbutton++;
+                                        buttonMarginLeft++;
+                                    }
+
                                 }
-                                if (WidthGridForbutton >= 800)
+                                else
                                 {
-                                    buttonMarginLeft = 0; buttonMarginTop++;
-                                    button.Margin = new Thickness(buttonMarginLeft * 160, 150 * buttonMarginTop, 0, 0);
-                                    buttonMarginLeft++;
+                                    button.Style = (Style)button.FindResource("ButtonComicsIssieStyle");
                                     WidthGridForbutton = 0;
+                                    iessie.ContentForButton.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                                    buttonMarginLeft = 0; buttonMarginTop++;
+                                    Grid.SetRow(button, buttonMarginTop);
+                                    Grid.SetColumn(button, buttonMarginLeft);
+                                    buttonMarginLeft++;
+
                                 }
                                 button.Click += (sender, e) =>
                                 {
                                     Content.Children.Clear();
+                                    ContentToIessie.Children.Clear();
+                                    BackgroundIessie.Children.Clear();
                                     Loader loaderItems = new Loader();
                                     Canvas.SetZIndex(loaderItems, (int)98);
                                     Content.Children.Add(loaderItems);
+                                    BackgroundIessie.Children.Remove(image);
                                     Content.Children.Add(GridAddChild(name_Rest1));
                                     Content.Children.Remove(loaderItems);
                                     ImagesMarginTop = 0;
-                                    #region READER_IMAGESITEMS
-                                    //sqlConect2 = new SqlConnection(connectionString);
-                                    //await sqlConect2.OpenAsync();
-                                    //using (SqlConnection connection2 = new SqlConnection(connectionString))
-                                    //{
-                                    //    connection2.Open();
-                                    //    string sql2 = "SELECT * FROM IMAGESITEMS";
-                                    //    SqlCommand command2 = new SqlCommand(sql2, connection2);
-                                    //    SqlDataReader reader2 = await command2.ExecuteReaderAsync();
-                                    //    while (reader2.Read())
-                                    //    {
-                                    //        try
-                                    //        {
-                                    //            string name_Rest2 = reader2.GetString(1);
-                                    //            if (name_Rest2 == name_Rest1)
-                                    //            {
-                                    //                byte[] data2 = (byte[])reader2.GetValue(2);
-                                    //                MemoryStream ms_2 = new MemoryStream(data2);
-                                    //                System.Drawing.Image newImage_2 = System.Drawing.Image.FromStream(ms_2);
-                                    //                Image imageS = new Image();
-                                    //                BitmapImage bi_2 = new BitmapImage();
-                                    //                bi_2.BeginInit();
-                                    //                MemoryStream ms2_2 = new MemoryStream();
-                                    //                newImage_2.Save(ms2_2, System.Drawing.Imaging.ImageFormat.Jpeg);
-                                    //                ms2_2.Seek(0, SeekOrigin.Begin);
-                                    //                bi_2.StreamSource = ms2_2;
-                                    //                bi_2.EndInit();
-                                    //                imageS.Source = bi_2;
-                                    //                imageS.Width = 812.5;
-                                    //                imageS.VerticalAlignment = VerticalAlignment.Top;
-                                    //                imageS.Margin = new Thickness(0, 1260 * ImagesMarginTop, 0, 0);
-                                    //                ImagesMarginTop++;
-                                    //                Content.Children.Add(imageS);
-                                    //            }
-                                    //        }
-                                    //        catch
-                                    //        {
-                                    //            MessageBox.Show("Erorr");
-                                    //        }
-                                    //    };
-                                    //    connection.Close();
-                                    //}
-                                    //ImagesMarginTop = 0;
-                                    #endregion
                                 };
-                                iessie.Content.Children.Add(button);
+                                iessie.ContentForButton.Children.Add(button);
                             }
                         };
                         connection1.Close();
                     }
-                    buttonMarginTop = 1; buttonMarginLeft = 0;
+                    buttonMarginTop = 0; buttonMarginLeft = 0; firstbutton = true;
                     #endregion
-                    iessie.TitleImages.Source = new BitmapImage(new Uri(catalog+data2));
-                    comicsPreview.ButtonGrid.MouseDown += (source, e) => { Content.Children.Clear(); Content.Children.Add(iessie); };
+                    iessie.backImage.MouseDown += (sen, t) => { Content.Children.Clear(); ContentToIessie.Children.Clear(); BackgroundIessie.Children.Clear(); LoadDataHistory().GetAwaiter(); };
+                    comicsPreview.ButtonGrid.MouseDown += (source, e) => {
+                        Content.Children.Clear();
+                        ContentToIessie.Children.Clear();
+                        ContentToIessie.Children.Add(iessie);
+                        BackgroundIessie.Children.Add(image);
+                        try
+                        {
+                            var str = NameSignIN.flag;
+                            var sqlConectHistory = new SqlConnection(connectionString);
+                            int sqlrezult;
+                            sqlConectHistory.Open();
+                            string sq1 = string.Format("SELECT COUNT(*) from HISTORY WHERE" + "( IDHISTORYCOMICS=" + "@LOG)");
+                            using (SqlCommand cmd = new SqlCommand(sq1, sqlConectHistory))
+                            {
+                                cmd.Parameters.AddWithValue("@LOG", name_Rest);
+                                sqlrezult = (int)cmd.ExecuteScalar();
+                            }
+                            sqlConect.Close();
+                            if (sqlrezult < 1)
+                            {
+                                var connectHistory = new SqlConnection(connectionString);
+                                connectHistory.Open();
+                                string sqlQ = string.Format("Insert Into HISTORY(IDUSERLOGIN,IDHISTORYCOMICS,IDCOMICSCOVER,IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE) Values(@IDUSERLOGIN,@IDHISTORYCOMICS,@IDCOMICSCOVER,@IDPARENTCATEGORY,@COMICSCOVERWALPAPER,@COMICSCOVERWALPAPERTOIESSIE)");
+                                using (SqlCommand cmd = new SqlCommand(sqlQ, connectHistory))
+                                {
+                                    cmd.Parameters.AddWithValue("@IDUSERLOGIN", str);
+                                    cmd.Parameters.AddWithValue("@IDHISTORYCOMICS", name_Rest);
+                                    cmd.Parameters.AddWithValue("@IDCOMICSCOVER", nameas);
+                                    cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", name_kategory);
+                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPER", data);
+                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", data2);
+                                    cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", DiscriptionComics);
+                                    cmd.ExecuteNonQuery();
+                                }
+                                connectHistory.Close();
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Error");
+                        }
+
+                    };
+                    if (WidthGrid < (int)Content.ActualWidth)
+                    {
+                        comicsPreview.Margin = new Thickness(LeftMarginCover * 184, 320 * TopMarginCover, 0, 0);
+                        LeftMarginCover++;
+                        WidthGrid = LeftMarginCover * 184;
+                    }
+                    if (WidthGrid >= (int)Content.ActualWidth)
+                    {
+                        LeftMarginCover = 0; TopMarginCover++;
+                        comicsPreview.Margin = new Thickness(LeftMarginCover * 184, 320 * TopMarginCover, 0, 0);
+                        LeftMarginCover++;
+                        WidthGrid = 0;
+                    }
+                    Content.Children.Add(comicsPreview);
+                };
+                connection.Close();
+                LeftMarginCover = 0;
+                TopMarginCover = 0;
+                WidthGrid = 0;
+            }
+            Content.Children.Remove(loader);
+        }
+        private async Task LoadDataCategory(Button buttonCategory)
+        {
+            Loader loader = new Loader();
+            Canvas.SetZIndex(loader, (int)98);
+            loader.Margin = new Thickness(0, 0, -40, 0);
+            Content.Children.Add(loader);
+            sqlConect = new SqlConnection(connectionString);
+            await sqlConect.OpenAsync();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = $"SELECT * FROM COMICSCOVER WHERE IDPARENTCATEGORY='{buttonCategory.Content.ToString()}'";
+                SqlCommand command = new SqlCommand(sql, connection);
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+                while (reader.Read())
+                {
+                    nameas = reader.GetValue(0).ToString();
+                    name_kategory = reader.GetString(1);
+                    data = reader.GetString(2);
+                    data2 = reader.GetString(3);
+                    DiscriptionComics = reader.GetString(4);
+                    name_Rest = reader.GetString(5);
+                    ComicsPreview comicsPreview = new ComicsPreview();
+                    Iessie iessie = new Iessie(Convert.ToInt32(nameas), name_kategory, data, data2);
+
+                    iessie.Margin = new Thickness(0, 0, 0, 0);
+                    iessie.ComicsDiscription.Text = DiscriptionComics;
+                    iessie.ComicsName.Text = name_Rest;
+                    //iessie.Content.HorizontalAlignment = HorizontalAlignment.Center;
+                    comicsPreview.ComicsWalpeper.Source = new BitmapImage(new Uri(catalog + data));
+                    comicsPreview.NameComix.Text = name_Rest;
+                    comicsPreview.NameGlavaComix.Text = name_kategory;
+                    #region IESSIE_ADD_BUTTON
+                    int buttonMarginLeft = 0,
+                        buttonMarginTop = 0;
+                    sqlConect1 = new SqlConnection(connectionString);
+                    await sqlConect1.OpenAsync();
+                    var image = new Image { Source = new BitmapImage(new Uri(catalog + data2)) };
+                    using (SqlConnection connection1 = new SqlConnection(connectionString))
+                    {
+                        connection1.Open();
+                        string sql1 = "SELECT * FROM COMICSCOVERITEM";
+                        SqlCommand command1 = new SqlCommand(sql1, connection1);
+                        SqlDataReader reader1 = await command1.ExecuteReaderAsync();
+                        while (reader1.Read())
+                        {
+                            string nameqw = reader1.GetValue(1).ToString();
+                            string name_Rest1 = reader1.GetString(2);
+                            GlobalString = name_Rest1;
+                            if (nameqw == nameas)
+                            {
+                                Button button = new Button();
+
+                                button.Content = name_Rest1;
+                                button.Margin = new Thickness(10, 5, 10, 5);
+                                button.Height = 50;
+                                if (buttonMarginLeft < 4)
+                                {
+                                    if (firstbutton)
+                                    {
+                                        Grid.SetRow(button, buttonMarginTop);
+                                        Grid.SetColumn(button, buttonMarginLeft);
+                                        WidthGridForbutton++;
+                                        buttonMarginLeft++;
+                                        button.Background = Brushes.DarkRed;
+                                        button.Foreground = Brushes.White;
+                                        firstbutton = false;
+                                        button.Style = (Style)button.FindResource("ButtonComicsIssieStylefirst");
+                                    }
+                                    else
+                                    {
+                                        button.Style = (Style)button.FindResource("ButtonComicsIssieStyle");
+                                        Grid.SetRow(button, buttonMarginTop);
+                                        Grid.SetColumn(button, buttonMarginLeft);
+                                        WidthGridForbutton++;
+                                        buttonMarginLeft++;
+                                    }
+
+                                }
+                                else
+                                {
+                                    button.Style = (Style)button.FindResource("ButtonComicsIssieStyle");
+                                    WidthGridForbutton = 0;
+                                    iessie.ContentForButton.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                                    buttonMarginLeft = 0; buttonMarginTop++;
+                                    Grid.SetRow(button, buttonMarginTop);
+                                    Grid.SetColumn(button, buttonMarginLeft);
+                                    buttonMarginLeft++;
+
+                                }
+                                button.Click += (sender, e) =>
+                                {
+                                    Content.Children.Clear();
+                                    ContentToIessie.Children.Clear();
+                                    BackgroundIessie.Children.Clear();
+                                    Loader loaderItems = new Loader();
+                                    Canvas.SetZIndex(loaderItems, (int)98);
+                                    Content.Children.Add(loaderItems);
+                                    BackgroundIessie.Children.Remove(image);
+                                    Content.Children.Add(GridAddChild(name_Rest1));
+                                    Content.Children.Remove(loaderItems);
+                                    ImagesMarginTop = 0;
+                                };
+                                iessie.ContentForButton.Children.Add(button);
+                            }
+                        };
+                        connection1.Close();
+                    }
+                    buttonMarginTop = 0; buttonMarginLeft = 0; firstbutton = true;
+                    #endregion
+                    iessie.backImage.MouseDown += (sen, t) => { Content.Children.Clear();
+                                                                ContentToIessie.Children.Clear();
+                                                                BackgroundIessie.Children.Clear();
+                                                                #region ACTIONBUTTON
+                                                                CreateButtonCategory(actionButton, "ACTION");
+                                                                actionButton.Margin = new Thickness(250, 50, 0, 0);
+                                                                Content.Children.Add(actionButton);
+                                                                #endregion
+                                                                #region HORRORBUTTON
+                                                                CreateButtonCategory(horrorButton, "HOROR");
+                                                                horrorButton.Margin = new Thickness(500, 50, 0, 0);
+                                                                Content.Children.Add(horrorButton);
+                                                                #endregion
+                                                                #region DEMONSBUTTON
+                                                                CreateButtonCategory(demonsButton, "DEMONS");
+                                                                demonsButton.Margin = new Thickness(250, 100, 0, 0);
+                                                                Content.Children.Add(demonsButton);
+                                                                tragedyButton.Style = (Style)tragedyButton.FindResource("ButtonSignStyle");
+                                                                #endregion
+                                                                #region TRAGEDYBUTTON
+                                                                CreateButtonCategory(tragedyButton, "TRAGEDY");
+                                                                tragedyButton.Margin = new Thickness(500, 100, 0, 0);
+                                                                Content.Children.Add(tragedyButton);
+                                                                #endregion
+                                                                #region MISTERYBUTTON
+                                                                CreateButtonCategory(MisteryButton, "MISTERY");
+                                                                MisteryButton.Margin = new Thickness(250, 150, 0, 0);
+                                                                Content.Children.Add(MisteryButton);
+                                                                #endregion
+                                                                #region ADVENTUREBUTTON
+                                                                CreateButtonCategory(adventureButton, "ADVENTURE");
+                                                                adventureButton.Margin = new Thickness(500, 150, 0, 0);
+                                                                Content.Children.Add(adventureButton);
+                                                                #endregion
+                                                                #region HISTORICALBUTTON
+                                                                CreateButtonCategory(historicalButton, "HISTORY");
+                                                                historicalButton.Margin = new Thickness(250, 200, 0, 0);
+                                                                Content.Children.Add(historicalButton);
+                                                                #endregion
+                                                                #region COMEDYBUTTON
+                                                                CreateButtonCategory(comedyButton, "COMEDY");
+                                                                comedyButton.Margin = new Thickness(500, 200, 0, 0);
+                                                                Content.Children.Add(comedyButton);
+                                                                #endregion
+                                                               };
+                    comicsPreview.ButtonGrid.MouseDown += (source, e) => {
+                    Content.Children.Clear();
+                    ContentToIessie.Children.Clear();
+                    ContentToIessie.Children.Add(iessie);
+                    BackgroundIessie.Children.Add(image);
+                    try
+                    {
+                        var str = NameSignIN.flag;
+                        var sqlConectHistory = new SqlConnection(connectionString);
+                        int sqlrezult;
+                        sqlConectHistory.Open();
+                        string sq1 = string.Format("SELECT COUNT(*) from HISTORY WHERE" + "( IDHISTORYCOMICS=" + "@LOG)");
+                        using (SqlCommand cmd = new SqlCommand(sq1, sqlConectHistory))
+                        {
+                            cmd.Parameters.AddWithValue("@LOG", name_Rest);
+                            sqlrezult = (int)cmd.ExecuteScalar();
+                        }
+                        sqlConect.Close();
+                        if (sqlrezult < 1)
+                        {
+                            var connectHistory = new SqlConnection(connectionString);
+                            connectHistory.Open();
+                            string sqlQ = string.Format("Insert Into HISTORY(IDUSERLOGIN,IDHISTORYCOMICS,IDCOMICSCOVER,IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSDISCRIPTION) Values(@IDUSERLOGIN,@IDHISTORYCOMICS,@IDCOMICSCOVER,@IDPARENTCATEGORY,@COMICSCOVERWALPAPER,@COMICSCOVERWALPAPERTOIESSIE,@COMICSDISCRIPTION)");
+                            using (SqlCommand cmd = new SqlCommand(sqlQ, connectHistory))
+                            {
+                                cmd.Parameters.AddWithValue("@IDUSERLOGIN", str);
+                                cmd.Parameters.AddWithValue("@IDHISTORYCOMICS", name_Rest);
+                                cmd.Parameters.AddWithValue("@IDCOMICSCOVER", nameas);
+                                cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", name_kategory);
+                                cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPER", data);
+                                cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", data2);
+                                cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", iessie.ComicsDiscription.Text);
+                                cmd.ExecuteNonQuery();
+                            }
+                            connectHistory.Close();
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error");
+                    }
+
+                    };
+                    if (WidthGrid < (int)Content.ActualWidth)
+                    {
+                        comicsPreview.Margin = new Thickness(LeftMarginCover * 184, 320 * TopMarginCover, 0, 0);
+                        LeftMarginCover++;
+                        WidthGrid = LeftMarginCover * 184;
+                    }
+                    if (WidthGrid >= (int)Content.ActualWidth)
+                    {
+                        LeftMarginCover = 0; TopMarginCover++;
+                        comicsPreview.Margin = new Thickness(LeftMarginCover * 184, 320 * TopMarginCover, 0, 0);
+                        LeftMarginCover++;
+                        WidthGrid = 0;
+                    }
+                    Content.Children.Add(comicsPreview);
+                };
+                connection.Close();
+                LeftMarginCover = 0;
+                TopMarginCover = 0;
+                WidthGrid = 0;
+            }
+            Content.Children.Remove(loader);
+        }
+        private async Task LoadDataFavourite()
+        {
+            Loader loader = new Loader();
+            Canvas.SetZIndex(loader, (int)98);
+            loader.Margin = new Thickness(0, 0, -40, 0);
+            Content.Children.Add(loader);
+            sqlConect = new SqlConnection(connectionString);
+            await sqlConect.OpenAsync();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                string sql = $"SELECT * FROM FAVOURITES WHERE IDUSERLOGIN='{NameSignIN.flag}'";
+                SqlCommand command = new SqlCommand(sql, connection);
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+                while (reader.Read())
+                {
+                   
+                    nameas = reader.GetValue(3).ToString();
+                    name_kategory = reader.GetString(4);
+                    data = reader.GetString(5);
+                    data2 = reader.GetString(6);
+                    DiscriptionComics = reader.GetString(7);
+                    name_Rest = reader.GetString(2);
+                    ComicsPreview comicsPreview = new ComicsPreview();
+                    Iessie iessie = new Iessie(Convert.ToInt32(nameas), name_kategory, data, data2);
+
+                    iessie.Margin = new Thickness(0, 0, 0, 0);
+                    iessie.ComicsDiscription.Text = DiscriptionComics;
+                    iessie.ComicsName.Text = name_Rest;
+                    //iessie.Content.HorizontalAlignment = HorizontalAlignment.Center;
+                    comicsPreview.ComicsWalpeper.Source = new BitmapImage(new Uri(catalog + data));
+                    comicsPreview.NameComix.Text = name_Rest;
+                    comicsPreview.NameGlavaComix.Text = name_kategory;
+                    #region IESSIE_ADD_BUTTON
+                    int buttonMarginLeft = 0,
+                        buttonMarginTop = 0;
+                    sqlConect1 = new SqlConnection(connectionString);
+                    await sqlConect1.OpenAsync();
+                    var image = new Image { Source = new BitmapImage(new Uri(catalog + data2)) };
+                    using (SqlConnection connection1 = new SqlConnection(connectionString))
+                    {
+                        connection1.Open();
+                        string sql1 = "SELECT * FROM COMICSCOVERITEM";
+                        SqlCommand command1 = new SqlCommand(sql1, connection1);
+                        SqlDataReader reader1 = await command1.ExecuteReaderAsync();
+                        while (reader1.Read())
+                        {
+                            string nameqw = reader1.GetValue(1).ToString();
+                            string name_Rest1 = reader1.GetString(2);
+                            GlobalString = name_Rest1;
+                            if (nameqw == nameas)
+                            {
+                                Button button = new Button();
+
+                                button.Content = name_Rest1;
+                                button.Margin = new Thickness(10, 5, 10, 5);
+                                button.Height = 50;
+                                if (buttonMarginLeft < 4)
+                                {
+                                    if (firstbutton)
+                                    {
+                                        Grid.SetRow(button, buttonMarginTop);
+                                        Grid.SetColumn(button, buttonMarginLeft);
+                                        WidthGridForbutton++;
+                                        buttonMarginLeft++;
+                                        button.Background = Brushes.DarkRed;
+                                        button.Foreground = Brushes.White;
+                                        firstbutton = false;
+                                        button.Style = (Style)button.FindResource("ButtonComicsIssieStylefirst");
+                                    }
+                                    else
+                                    {
+                                        button.Style = (Style)button.FindResource("ButtonComicsIssieStyle");
+                                        Grid.SetRow(button, buttonMarginTop);
+                                        Grid.SetColumn(button, buttonMarginLeft);
+                                        WidthGridForbutton++;
+                                        buttonMarginLeft++;
+                                    }
+
+                                }
+                                else
+                                {
+                                    button.Style = (Style)button.FindResource("ButtonComicsIssieStyle");
+                                    WidthGridForbutton = 0;
+                                    iessie.ContentForButton.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                                    buttonMarginLeft = 0; buttonMarginTop++;
+                                    Grid.SetRow(button, buttonMarginTop);
+                                    Grid.SetColumn(button, buttonMarginLeft);
+                                    buttonMarginLeft++;
+
+                                }
+                                button.Click += (sender, e) =>
+                                {
+                                    Content.Children.Clear();
+                                    ContentToIessie.Children.Clear();
+                                    BackgroundIessie.Children.Clear();
+                                    Loader loaderItems = new Loader();
+                                    Canvas.SetZIndex(loaderItems, (int)98);
+                                    Content.Children.Add(loaderItems);
+                                    BackgroundIessie.Children.Remove(image);
+                                    Content.Children.Add(GridAddChild(name_Rest1));
+                                    Content.Children.Remove(loaderItems);
+                                    ImagesMarginTop = 0;
+                                };
+                                iessie.ContentForButton.Children.Add(button);
+                            }
+                        };
+                        connection1.Close();
+                    }
+                    buttonMarginTop = 0; buttonMarginLeft = 0; firstbutton = true;
+                    #endregion
+                    iessie.backImage.MouseDown += (sen, t) => { Content.Children.Clear(); ContentToIessie.Children.Clear(); BackgroundIessie.Children.Clear(); LoadDataFavourite().GetAwaiter(); };
+                    comicsPreview.ButtonGrid.MouseDown += (source, e) => {
+                        Content.Children.Clear();
+                        ContentToIessie.Children.Clear();
+                        ContentToIessie.Children.Add(iessie);
+                        BackgroundIessie.Children.Add(image);
+                        try
+                        {
+                            var str = NameSignIN.flag;
+                            var sqlConectHistory = new SqlConnection(connectionString);
+                            int sqlrezult;
+                            sqlConectHistory.Open();
+                            string sq1 = string.Format("SELECT COUNT(*) from HISTORY WHERE" + "( IDHISTORYCOMICS=" + "@LOG)");
+                            using (SqlCommand cmd = new SqlCommand(sq1, sqlConectHistory))
+                            {
+                                cmd.Parameters.AddWithValue("@LOG", name_Rest);
+                                sqlrezult = (int)cmd.ExecuteScalar();
+                            }
+                            sqlConect.Close();
+                            if (sqlrezult < 1)
+                            {
+                                var connectHistory = new SqlConnection(connectionString);
+                                connectHistory.Open();
+                                string sqlQ = string.Format("Insert Into HISTORY(IDUSERLOGIN,IDHISTORYCOMICS,IDCOMICSCOVER,IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSDISCRIPTION) Values(@IDUSERLOGIN,@IDHISTORYCOMICS,@IDCOMICSCOVER,@IDPARENTCATEGORY,@COMICSCOVERWALPAPER,@COMICSCOVERWALPAPERTOIESSIE,@COMICSDISCRIPTION)");
+                                using (SqlCommand cmd = new SqlCommand(sqlQ, connectHistory))
+                                {
+                                    cmd.Parameters.AddWithValue("@IDUSERLOGIN", str);
+                                    cmd.Parameters.AddWithValue("@IDHISTORYCOMICS", name_Rest);
+                                    cmd.Parameters.AddWithValue("@IDCOMICSCOVER", nameas);
+                                    cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", name_kategory);
+                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPER", data);
+                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", data2);
+                                    cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", iessie.ComicsDiscription.Text);
+                                    cmd.ExecuteNonQuery();
+                                }
+                                connectHistory.Close();
+                            }
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Error");
+                        }
+
+                    };
                     if (WidthGrid < (int)Content.ActualWidth)
                     {
                         comicsPreview.Margin = new Thickness(LeftMarginCover * 184, 320 * TopMarginCover, 0, 0);
@@ -363,15 +973,14 @@ namespace ComicsMaster
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            LoadDataRecomend().GetAwaiter();
+            Content.Children.Add(new Recomend(this));
             var str = NameSignIN.flag;
             if (str == "ADMIN")
             {
                 addButton.Height = 40;
             }
-            BurgerRecomendR.BeginAnimation(Rectangle.WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, BurgerRecomend.ActualWidth, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerRecomendR.BeginAnimation(Rectangle.WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, BurgerRecomend.ActualWidth-10, TimeSpan.FromSeconds(timeOpacity)));
             try { ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48 (1).png")); } catch { };
-           
         }
         private void Burger_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -381,11 +990,10 @@ namespace ComicsMaster
         private void BurgerUpdate_MouseEnter(object sender, MouseEventArgs e) => BurgerUpdate.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
         private void BurgerFavourite_MouseEnter(object sender, MouseEventArgs e) => BurgerFavourite.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
         private void BurgerCategory_MouseEnter(object sender, MouseEventArgs e) => BurgerCategory.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
-
         private void BurgerRecomend_MouseDown(object sender, MouseButtonEventArgs e)
         {
             #region animation
-            BurgerRecomendR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, BurgerRecomend.ActualWidth, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerRecomendR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, BurgerRecomend.ActualWidth-10, TimeSpan.FromSeconds(timeOpacity)));
             BurgerUpdateR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerUpdateR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
             BurgerFavouriteR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerFavouriteR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
             BurgerCategoryR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerCategoryR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
@@ -399,13 +1007,16 @@ namespace ComicsMaster
             catch { }
             #endregion
             Content.Children.Clear();
-            LoadDataRecomend().GetAwaiter();
+            ContentToIessie.Children.Clear();
+            BackgroundIessie.Children.Clear();
+            //LoadDataRecomend().GetAwaiter();
+            Content.Children.Add(new Recomend(this));
         }
         private void BurgerUpdate_MouseDown(object sender, MouseButtonEventArgs e)
         {
             #region animation
             BurgerRecomendR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
-            BurgerUpdateR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerUpdateR.ActualWidth, BurgerUpdate.ActualWidth, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerUpdateR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerUpdateR.ActualWidth, BurgerUpdate.ActualWidth-10, TimeSpan.FromSeconds(timeOpacity)));
             BurgerFavouriteR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerFavouriteR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
             BurgerCategoryR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerCategoryR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
             try
@@ -417,13 +1028,17 @@ namespace ComicsMaster
             }
             catch { }
             #endregion
+            Content.Children.Clear();
+            ContentToIessie.Children.Clear();
+            BackgroundIessie.Children.Clear();
+            LoadDataLatestUpdate().GetAwaiter();
         }
         private void BurgerFavourite_MouseDown(object sender, MouseButtonEventArgs e)
         {
             #region animation
             BurgerRecomendR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
             BurgerUpdateR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerUpdateR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
-            BurgerFavouriteR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerFavouriteR.ActualWidth, BurgerFavourite.ActualWidth, TimeSpan.FromSeconds(timeOpacity)));
+            BurgerFavouriteR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerFavouriteR.ActualWidth, BurgerFavourite.ActualWidth-10, TimeSpan.FromSeconds(timeOpacity)));
             BurgerCategoryR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerCategoryR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
             try
             {
@@ -434,6 +1049,10 @@ namespace ComicsMaster
             }
             catch { }
             #endregion
+            Content.Children.Clear();
+            ContentToIessie.Children.Clear();
+            BackgroundIessie.Children.Clear();
+            LoadDataFavourite().GetAwaiter();
         }
         private void BurgerCategory_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -465,7 +1084,6 @@ namespace ComicsMaster
             ImageN4.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-sorting-52 (2).png"));
             #endregion
         }
-
         private void Burger_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DoubleAnimation recollor4 = new DoubleAnimation();
@@ -487,7 +1105,6 @@ namespace ComicsMaster
             BurgerUpdate.Background = null;
             BurgerRecomend.Background = null;
         }
-
         private void BlackFill_MouseDown(object sender, MouseButtonEventArgs e)
         {
             
@@ -504,33 +1121,37 @@ namespace ComicsMaster
             FullMenu.BeginAnimation(Grid.WidthProperty, recollor4);
 
         }
-      
-       
         private void PlayAudio_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            try
+            if (InternetChecker.IsConnectedToInternet())
             {
-                var document = WebPlayer.Document as mshtml.HTMLDocument;
-                var inputs = document.getElementsByTagName("button");
-                foreach (mshtml.IHTMLElement element in inputs)
+                try
                 {
-                    if (element.getAttribute("className") == "ytp-play-button ytp-button")
+
+                    var document = WebPlayer.Document as mshtml.HTMLDocument;
+                    var inputs = document.getElementsByTagName("button");
+                    foreach (mshtml.IHTMLElement element in inputs)
                     {
-                        element.click();
+                        if (element.getAttribute("className") == "ytp-play-button ytp-button")
+                        {
+                            element.click();
+                        }
                     }
                 }
+                catch (Exception exp)
+                {
+                    MessageBox.Show(exp.ToString());
+                }
             }
-            catch(Exception exp)
+            else
             {
-                MessageBox.Show(exp.ToString());
+                MessageBox.Show("You are not connet to Internet");
             }
         }
-
         private void WebPlayer_LoadCompleted(object sender, NavigationEventArgs e)
         {
           
         }
-
         private void VolumAudio_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -550,7 +1171,6 @@ namespace ComicsMaster
                 MessageBox.Show(exp.ToString());
             }
         }
-
         private void NextAudio_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try
@@ -570,7 +1190,6 @@ namespace ComicsMaster
                 MessageBox.Show(exp.ToString());
             }
         }
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             if (this.WindowState == WindowState.Normal)
@@ -584,7 +1203,7 @@ namespace ComicsMaster
                 Shadow.Margin = new Thickness(10, 10, 10, 10);
             }
         }
-        private void Button_Click(object sender, RoutedEventArgs e)=>this.Close();
+        private void Button_Click(object sender, RoutedEventArgs e)=>System.Windows.Application.Current.Shutdown();
         private void Button_Click_1(object sender, RoutedEventArgs e)=>this.WindowState = WindowState.Minimized;
         private void Grid_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)=>this.DragMove();
         private void ChangeUserImage_Click(object sender, RoutedEventArgs e)
@@ -595,390 +1214,109 @@ namespace ComicsMaster
         private void RecommendationButton2_Click(object sender, RoutedEventArgs e)
         {
             #region recommendationBackground
-            DoubleAnimation recollor1 = new DoubleAnimation();
-            recollor1.From = RecommendationBackground.Opacity;
-            recollor1.To = 1;
-            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity);
-            RecommendationBackground.BeginAnimation(Border.OpacityProperty, recollor1);
-
-            DoubleAnimation recollor = new DoubleAnimation();
-            recollor.From = LatestUpdateBackground.Opacity;
-            recollor.To = 0;
-            recollor.Duration = TimeSpan.FromSeconds(timeOpacity);
-            LatestUpdateBackground.BeginAnimation(Border.OpacityProperty, recollor);
-
-            DoubleAnimation recollor2 = new DoubleAnimation();
-            recollor2.From = CategoryBackground.Opacity;
-            recollor2.To = 0;
-            recollor2.Duration = TimeSpan.FromSeconds(timeOpacity);
-            CategoryBackground.BeginAnimation(Border.OpacityProperty, recollor2);
-
-            DoubleAnimation recollor3 = new DoubleAnimation();
-            recollor3.From = HistoryBackground.Opacity;
-            recollor3.To = 0;
-            recollor3.Duration = TimeSpan.FromSeconds(timeOpacity);
-            HistoryBackground.BeginAnimation(Border.OpacityProperty, recollor3);
-
-            DoubleAnimation recollor4 = new DoubleAnimation();
-            recollor4.From = FavouritesBackground.Opacity;
-            recollor4.To = 0;
-            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity);
-            FavouritesBackground.BeginAnimation(Border.OpacityProperty, recollor4);
-
-            DoubleAnimation recollor5 = new DoubleAnimation();
-            recollor5.From = SettingsBackground.Opacity;
-            recollor5.To = 0;
-            recollor5.Duration = TimeSpan.FromSeconds(timeOpacity);
-            SettingsBackground.BeginAnimation(Border.OpacityProperty, recollor5);
-
-            DoubleAnimation recollor6 = new DoubleAnimation();
-            recollor6.From = BrowserBackground.Opacity;
-            recollor6.To = 0;
-            recollor6.Duration = TimeSpan.FromSeconds(timeOpacity);
-            BrowserBackground.BeginAnimation(Border.OpacityProperty, recollor6);
+            ButtonMenuCreateAnimation(RecommendationBackground);
             #endregion
             Content.Children.Clear();
-            LoadDataRecomend().GetAwaiter();
+            ContentToIessie.Children.Clear();
+            BackgroundIessie.Children.Clear();
+            Content.Children.Add(new Recomend(this));
         }
         private void LatestUpdateButton2_Click(object sender, RoutedEventArgs e)
         {
             #region latestUpdateBackground
-            DoubleAnimation recollor1 = new DoubleAnimation();
-            recollor1.From = RecommendationBackground.Opacity;
-            recollor1.To = 0;
-            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity);
-            RecommendationBackground.BeginAnimation(Border.OpacityProperty, recollor1);
-
-            DoubleAnimation recollor = new DoubleAnimation();
-            recollor.From = LatestUpdateBackground.Opacity;
-            recollor.To = 1;
-            recollor.Duration = TimeSpan.FromSeconds(timeOpacity);
-            LatestUpdateBackground.BeginAnimation(Border.OpacityProperty, recollor);
-
-            DoubleAnimation recollor2 = new DoubleAnimation();
-            recollor2.From = CategoryBackground.Opacity;
-            recollor2.To = 0;
-            recollor2.Duration = TimeSpan.FromSeconds(timeOpacity);
-            CategoryBackground.BeginAnimation(Border.OpacityProperty, recollor2);
-
-            DoubleAnimation recollor3 = new DoubleAnimation();
-            recollor3.From = HistoryBackground.Opacity;
-            recollor3.To = 0;
-            recollor3.Duration = TimeSpan.FromSeconds(timeOpacity);
-            HistoryBackground.BeginAnimation(Border.OpacityProperty, recollor3);
-
-            DoubleAnimation recollor4 = new DoubleAnimation();
-            recollor4.From = FavouritesBackground.Opacity;
-            recollor4.To = 0;
-            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity);
-            FavouritesBackground.BeginAnimation(Border.OpacityProperty, recollor4);
-
-            DoubleAnimation recollor5 = new DoubleAnimation();
-            recollor5.From = SettingsBackground.Opacity;
-            recollor5.To = 0;
-            recollor5.Duration = TimeSpan.FromSeconds(timeOpacity);
-            SettingsBackground.BeginAnimation(Border.OpacityProperty, recollor5);
-
-            DoubleAnimation recollor6 = new DoubleAnimation();
-            recollor6.From = BrowserBackground.Opacity;
-            recollor6.To = 0;
-            recollor6.Duration = TimeSpan.FromSeconds(timeOpacity);
-            BrowserBackground.BeginAnimation(Border.OpacityProperty, recollor6);
+            ButtonMenuCreateAnimation(LatestUpdateBackground);
             #endregion
             Content.Children.Clear();
+            ContentToIessie.Children.Clear();
+            BackgroundIessie.Children.Clear();
             LoadDataLatestUpdate().GetAwaiter();
         }
         private void CategoryButton2_Click(object sender, RoutedEventArgs e)
         {
             Content.Children.Clear();
+            ContentToIessie.Children.Clear();
+            BackgroundIessie.Children.Clear();
             #region categoryBackground
-            DoubleAnimation recollor1 = new DoubleAnimation();
-            recollor1.From = RecommendationBackground.Opacity;
-            recollor1.To = 0;
-            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity);
-            RecommendationBackground.BeginAnimation(Border.OpacityProperty, recollor1);
-
-            DoubleAnimation recollor = new DoubleAnimation();
-            recollor.From = LatestUpdateBackground.Opacity;
-            recollor.To = 0;
-            recollor.Duration = TimeSpan.FromSeconds(timeOpacity);
-            LatestUpdateBackground.BeginAnimation(Border.OpacityProperty, recollor);
-
-            DoubleAnimation recollor2 = new DoubleAnimation();
-            recollor2.From = CategoryBackground.Opacity;
-            recollor2.To = 1;
-            recollor2.Duration = TimeSpan.FromSeconds(timeOpacity);
-            CategoryBackground.BeginAnimation(Border.OpacityProperty, recollor2);
-
-            DoubleAnimation recollor3 = new DoubleAnimation();
-            recollor3.From = HistoryBackground.Opacity;
-            recollor3.To = 0;
-            recollor3.Duration = TimeSpan.FromSeconds(timeOpacity);
-            HistoryBackground.BeginAnimation(Border.OpacityProperty, recollor3);
-
-            DoubleAnimation recollor4 = new DoubleAnimation();
-            recollor4.From = FavouritesBackground.Opacity;
-            recollor4.To = 0;
-            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity);
-            FavouritesBackground.BeginAnimation(Border.OpacityProperty, recollor4);
-
-            DoubleAnimation recollor5 = new DoubleAnimation();
-            recollor5.From = SettingsBackground.Opacity;
-            recollor5.To = 0;
-            recollor5.Duration = TimeSpan.FromSeconds(timeOpacity);
-            SettingsBackground.BeginAnimation(Border.OpacityProperty, recollor5);
-
-            DoubleAnimation recollor6 = new DoubleAnimation();
-            recollor6.From = BrowserBackground.Opacity;
-            recollor6.To = 0;
-            recollor6.Duration = TimeSpan.FromSeconds(timeOpacity);
-            BrowserBackground.BeginAnimation(Border.OpacityProperty, recollor6);
+            ButtonMenuCreateAnimation(CategoryBackground);
             #endregion
             #region ACTIONBUTTON
-            action.Width = 100;
-            action.Height = 30;
-            action.Content = "ACTION";
-            action.Margin = new Thickness(250, 100,0,0);
-            action.Click += (source, t) => { act = true;
-                                             adv = false;
-                                             hor = false;
-                                             com = false;
-                                             dem = false;
-                                             mis = false;
-                                             his = false;
-                                             tra = false;
-                                             Content.Children.Clear();
-                                           };
-            Content.Children.Add(action);
+            CreateButtonCategory(actionButton, "ACTION");
+            actionButton.Margin = new Thickness(250, 50,0,0);
+            Content.Children.Add(actionButton);
             #endregion
-            #region ADVENTUREBUTTON
-            adventure.Width = 100;
-            adventure.Height = 30;
-            adventure.Content = "ADVENTURE";
-            adventure.Margin = new Thickness(500, 100, 0, 0);
-            adventure.Click += (source, t) => { act = false;
-                                                adv = true;
-                                                hor = false;
-                                                com = false;
-                                                dem = false;
-                                                mis = false;
-                                                his = false;
-                                                tra = false;
-                                                Content.Children.Clear();
-                                              };
-            Content.Children.Add(adventure);
+            #region HORRORBUTTON
+            CreateButtonCategory(horrorButton, "HOROR");
+            horrorButton.Margin = new Thickness(500, 50, 0, 0);
+            Content.Children.Add(horrorButton);
+            #endregion
+            #region DEMONSBUTTON
+            CreateButtonCategory(demonsButton, "DEMONS");
+            demonsButton.Margin = new Thickness(250, 100, 0, 0);
+            Content.Children.Add(demonsButton);
+            tragedyButton.Style = (Style)tragedyButton.FindResource("ButtonSignStyle");
+            #endregion
+            #region TRAGEDYBUTTON
+            CreateButtonCategory(tragedyButton, "TRAGEDY");
+            tragedyButton.Margin = new Thickness(500, 100, 0, 0);
+            Content.Children.Add(tragedyButton);
             #endregion
             #region MISTERYBUTTON
-            comedy.Width = 100;
-            comedy.Height = 30;
-            comedy.Content = "COMEDY";
-            comedy.Margin = new Thickness(500, 400, 0, 0);
-            comedy.Click += (source, t) => { act = false;
-                                             adv = false;
-                                             hor = false;
-                                             com = true;
-                                             dem = false;
-                                             mis = false;
-                                             his = false;
-                                             tra = false;
-                                             Content.Children.Clear();
-                                           };
-            Content.Children.Add(comedy);
+            CreateButtonCategory(MisteryButton, "MISTERY");
+            MisteryButton.Margin = new Thickness(250, 150, 0, 0);
+            Content.Children.Add(MisteryButton);
+            #endregion
+            #region ADVENTUREBUTTON
+            CreateButtonCategory(adventureButton, "ADVENTURE");
+            adventureButton.Margin = new Thickness(500, 150, 0, 0);
+            Content.Children.Add(adventureButton);
+            #endregion
+            #region HISTORICALBUTTON
+            CreateButtonCategory(historicalButton, "HISTORY");
+            historicalButton.Margin = new Thickness(250, 200, 0, 0);
+            Content.Children.Add(historicalButton);
+            #endregion
+            #region COMEDYBUTTON
+            CreateButtonCategory(comedyButton, "COMEDY");
+            comedyButton.Margin = new Thickness(500, 200, 0, 0);
+            Content.Children.Add(comedyButton);
             #endregion
         }
         private void HistoryButton2_Click(object sender, RoutedEventArgs e)
         {
             #region historyBackground
-            DoubleAnimation recollor1 = new DoubleAnimation();
-            recollor1.From = RecommendationBackground.Opacity;
-            recollor1.To = 0;
-            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity);
-            RecommendationBackground.BeginAnimation(Border.OpacityProperty, recollor1);
-
-            DoubleAnimation recollor = new DoubleAnimation();
-            recollor.From = LatestUpdateBackground.Opacity;
-            recollor.To = 0;
-            recollor.Duration = TimeSpan.FromSeconds(timeOpacity);
-            LatestUpdateBackground.BeginAnimation(Border.OpacityProperty, recollor);
-
-            DoubleAnimation recollor2 = new DoubleAnimation();
-            recollor2.From = CategoryBackground.Opacity;
-            recollor2.To = 0;
-            recollor2.Duration = TimeSpan.FromSeconds(timeOpacity);
-            CategoryBackground.BeginAnimation(Border.OpacityProperty, recollor2);
-
-            DoubleAnimation recollor3 = new DoubleAnimation();
-            recollor3.From = HistoryBackground.Opacity;
-            recollor3.To = 1;
-            recollor3.Duration = TimeSpan.FromSeconds(timeOpacity);
-            HistoryBackground.BeginAnimation(Border.OpacityProperty, recollor3);
-
-            DoubleAnimation recollor4 = new DoubleAnimation();
-            recollor4.From = FavouritesBackground.Opacity;
-            recollor4.To = 0;
-            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity);
-            FavouritesBackground.BeginAnimation(Border.OpacityProperty, recollor4);
-
-            DoubleAnimation recollor5 = new DoubleAnimation();
-            recollor5.From = SettingsBackground.Opacity;
-            recollor5.To = 0;
-            recollor5.Duration = TimeSpan.FromSeconds(timeOpacity);
-            SettingsBackground.BeginAnimation(Border.OpacityProperty, recollor5);
-
-            DoubleAnimation recollor6 = new DoubleAnimation();
-            recollor6.From = BrowserBackground.Opacity;
-            recollor6.To = 0;
-            recollor6.Duration = TimeSpan.FromSeconds(timeOpacity);
-            BrowserBackground.BeginAnimation(Border.OpacityProperty, recollor6);
+            ButtonMenuCreateAnimation(HistoryBackground);
             #endregion
             Content.Children.Clear();
+            ContentToIessie.Children.Clear();
+            BackgroundIessie.Children.Clear();
+            LoadDataHistory().GetAwaiter();
         }
         private void FavouritesButton2_Click(object sender, RoutedEventArgs e)
         {
             #region favouritesBackground
-            DoubleAnimation recollor1 = new DoubleAnimation();
-            recollor1.From = RecommendationBackground.Opacity;
-            recollor1.To = 0;
-            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity);
-            RecommendationBackground.BeginAnimation(Border.OpacityProperty, recollor1);
-
-            DoubleAnimation recollor = new DoubleAnimation();
-            recollor.From = LatestUpdateBackground.Opacity;
-            recollor.To = 0;
-            recollor.Duration = TimeSpan.FromSeconds(timeOpacity);
-            LatestUpdateBackground.BeginAnimation(Border.OpacityProperty, recollor);
-
-            DoubleAnimation recollor2 = new DoubleAnimation();
-            recollor2.From = CategoryBackground.Opacity;
-            recollor2.To = 0;
-            recollor2.Duration = TimeSpan.FromSeconds(timeOpacity);
-            CategoryBackground.BeginAnimation(Border.OpacityProperty, recollor2);
-
-            DoubleAnimation recollor3 = new DoubleAnimation();
-            recollor3.From = HistoryBackground.Opacity;
-            recollor3.To = 0;
-            recollor3.Duration = TimeSpan.FromSeconds(timeOpacity);
-            HistoryBackground.BeginAnimation(Border.OpacityProperty, recollor3);
-
-            DoubleAnimation recollor4 = new DoubleAnimation();
-            recollor4.From = FavouritesBackground.Opacity;
-            recollor4.To = 1;
-            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity);
-            FavouritesBackground.BeginAnimation(Border.OpacityProperty, recollor4);
-
-            DoubleAnimation recollor5 = new DoubleAnimation();
-            recollor5.From = SettingsBackground.Opacity;
-            recollor5.To = 0;
-            recollor5.Duration = TimeSpan.FromSeconds(timeOpacity);
-            SettingsBackground.BeginAnimation(Border.OpacityProperty, recollor5);
-
-            DoubleAnimation recollor6 = new DoubleAnimation();
-            recollor6.From = BrowserBackground.Opacity;
-            recollor6.To = 0;
-            recollor6.Duration = TimeSpan.FromSeconds(timeOpacity);
-            BrowserBackground.BeginAnimation(Border.OpacityProperty, recollor6);
+            ButtonMenuCreateAnimation(FavouritesBackground);
             #endregion
         }
         private void SettingsButton2_Click(object sender, RoutedEventArgs e)
         {
-            #region settingsBackground
-            DoubleAnimation recollor1 = new DoubleAnimation();
-            recollor1.From = RecommendationBackground.Opacity;
-            recollor1.To = 0;
-            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity);
-            RecommendationBackground.BeginAnimation(Border.OpacityProperty, recollor1);
-
-            DoubleAnimation recollor = new DoubleAnimation();
-            recollor.From = LatestUpdateBackground.Opacity;
-            recollor.To = 0;
-            recollor.Duration = TimeSpan.FromSeconds(timeOpacity);
-            LatestUpdateBackground.BeginAnimation(Border.OpacityProperty, recollor);
-
-            DoubleAnimation recollor2 = new DoubleAnimation();
-            recollor2.From = CategoryBackground.Opacity;
-            recollor2.To = 0;
-            recollor2.Duration = TimeSpan.FromSeconds(timeOpacity);
-            CategoryBackground.BeginAnimation(Border.OpacityProperty, recollor2);
-
-            DoubleAnimation recollor3 = new DoubleAnimation();
-            recollor3.From = HistoryBackground.Opacity;
-            recollor3.To = 0;
-            recollor3.Duration = TimeSpan.FromSeconds(timeOpacity);
-            HistoryBackground.BeginAnimation(Border.OpacityProperty, recollor3);
-
-            DoubleAnimation recollor4 = new DoubleAnimation();
-            recollor4.From = FavouritesBackground.Opacity;
-            recollor4.To = 0;
-            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity);
-            FavouritesBackground.BeginAnimation(Border.OpacityProperty, recollor4);
-
-            DoubleAnimation recollor5 = new DoubleAnimation();
-            recollor5.From = SettingsBackground.Opacity;
-            recollor5.To = 1;
-            recollor5.Duration = TimeSpan.FromSeconds(timeOpacity);
-            SettingsBackground.BeginAnimation(Border.OpacityProperty, recollor5);
-
-            DoubleAnimation recollor6 = new DoubleAnimation();
-            recollor6.From = BrowserBackground.Opacity;
-            recollor6.To = 0;
-            recollor6.Duration = TimeSpan.FromSeconds(timeOpacity);
-            BrowserBackground.BeginAnimation(Border.OpacityProperty, recollor6);
+            #region settingsBackground        
+            ButtonMenuCreateAnimation(SettingsBackground);
             #endregion
         }
         private void BrowserButton2_Click(object sender, RoutedEventArgs e)
         {
             #region browserBackground
-            DoubleAnimation recollor1 = new DoubleAnimation();
-            recollor1.From = RecommendationBackground.Opacity;
-            recollor1.To = 0;
-            recollor1.Duration = TimeSpan.FromSeconds(timeOpacity);
-            RecommendationBackground.BeginAnimation(Border.OpacityProperty, recollor1);
-
-            DoubleAnimation recollor = new DoubleAnimation();
-            recollor.From = LatestUpdateBackground.Opacity;
-            recollor.To = 0;
-            recollor.Duration = TimeSpan.FromSeconds(timeOpacity);
-            LatestUpdateBackground.BeginAnimation(Border.OpacityProperty, recollor);
-
-            DoubleAnimation recollor2 = new DoubleAnimation();
-            recollor2.From = CategoryBackground.Opacity;
-            recollor2.To = 0;
-            recollor2.Duration = TimeSpan.FromSeconds(timeOpacity);
-            CategoryBackground.BeginAnimation(Border.OpacityProperty, recollor2);
-
-            DoubleAnimation recollor3 = new DoubleAnimation();
-            recollor3.From = HistoryBackground.Opacity;
-            recollor3.To = 0;
-            recollor3.Duration = TimeSpan.FromSeconds(timeOpacity);
-            HistoryBackground.BeginAnimation(Border.OpacityProperty, recollor3);
-
-            DoubleAnimation recollor4 = new DoubleAnimation();
-            recollor4.From = FavouritesBackground.Opacity;
-            recollor4.To = 0;
-            recollor4.Duration = TimeSpan.FromSeconds(timeOpacity);
-            FavouritesBackground.BeginAnimation(Border.OpacityProperty, recollor4);
-
-            DoubleAnimation recollor5 = new DoubleAnimation();
-            recollor5.From = SettingsBackground.Opacity;
-            recollor5.To = 0;
-            recollor5.Duration = TimeSpan.FromSeconds(timeOpacity);
-            SettingsBackground.BeginAnimation(Border.OpacityProperty, recollor5);
-
-            DoubleAnimation recollor6 = new DoubleAnimation();
-            recollor6.From = BrowserBackground.Opacity;
-            recollor6.To = 1;
-            recollor6.Duration = TimeSpan.FromSeconds(timeOpacity);
-            BrowserBackground.BeginAnimation(Border.OpacityProperty, recollor6);
+            ButtonMenuCreateAnimation(BrowserBackground);
             #endregion
         }
         #endregion
         private void addButton2_Click(object sender, RoutedEventArgs e)
         {
-            ADMINPAGE admin = new ADMINPAGE();
+            #region addBackground
+            ButtonMenuCreateAnimation(addBackground);
+            #endregion
             Content.Children.Clear();
-            admin.Width = 800;
-            admin.Height = 450;
-            Content.Children.Add(admin);
+            Content.Children.Add(new ADMINPAGE { Width = 800, Height = 450 });
         }
     }
 }

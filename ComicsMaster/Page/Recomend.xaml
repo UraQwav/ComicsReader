@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="ComicsMaster.Page.Recomend"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ComicsMaster.Page"
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d" d:DesignWidth="1130" Height="2027.324">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="350" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="281*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="20,10" Foreground="Gray">Most popular</TextBlock>
+            <Grid x:Name="ContentPopular" Grid.Row="1" Margin="10"></Grid>
+        </Grid>
+        <Grid Grid.Row="1" Height="280" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="183*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="20,10" Foreground="Gray">Manga</TextBlock>
+            <Grid x:Name="ContentManga" Grid.Row="1" Margin="10"></Grid>
+        </Grid>
+        <Grid Grid.Row="2" Height="280" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="183*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="20,10" Foreground="Gray">Action</TextBlock>
+            <Grid x:Name="ContentAction" Grid.Row="1" Margin="10"></Grid>
+        </Grid>
+        <Grid Grid.Row="3" Height="280" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="183*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="20,10" Foreground="Gray">Adventure</TextBlock>
+            <Grid x:Name="ContentAdventure" Grid.Row="1" Margin="10"></Grid>
+        </Grid>
+        <Grid Grid.Row="4" Height="280" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="183*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="20,10" Foreground="Gray">Comedy</TextBlock>
+            <Grid x:Name="ContentComedy" Grid.Row="1" Margin="10"></Grid>
+        </Grid>
+        <Grid Grid.Row="5" Height="280" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="183*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="20,10" Foreground="Gray">Horor</TextBlock>
+            <Grid x:Name="ContentHoror" Grid.Row="1" Margin="10"></Grid>
+        </Grid>
+        <Grid Grid.Row="6" Height="280" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="183*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="20,10" Foreground="Gray">Mistery</TextBlock>
+            <Grid x:Name="ContentMistery" Grid.Row="1" Margin="10"></Grid>
+        </Grid>
+        <Grid Grid.Row="7" Height="280" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="183*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Margin="20,10" Foreground="Gray">Tragedy</TextBlock>
+            <Grid x:Name="ContentTragedy" Grid.Row="1" Margin="10"></Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>

@@ -151,7 +151,7 @@ namespace ComicsMaster
                 //    fs.Read(imageData, 0, imageData.Length);
                 //}
                 string sql = string.Format("Insert Into COMICSCOVER" +
-                "(IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSNAME) Values(@IDPARENTCATEGORY,@ImageData,@COMICSCOVERWALPAPERTOIESSIE,@Name)");
+                "(IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSDISCRIPTION,COMICSNAME) Values(@IDPARENTCATEGORY,@ImageData,@COMICSCOVERWALPAPERTOIESSIE,@COMICSDISCRIPTION,@Name)");
 
 
                 using (SqlCommand cmd = new SqlCommand(sql, this.connect))
@@ -160,6 +160,7 @@ namespace ComicsMaster
                     cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", IDPARENTCATEGORY);
                     cmd.Parameters.AddWithValue("@ImageData", Cover);
                     cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", Walpaper);
+                    cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", DescriptionComics.Text);
                     cmd.Parameters.AddWithValue("@Name", title.Text);
                     cmd.ExecuteNonQuery();
                 }
@@ -251,7 +252,7 @@ namespace ComicsMaster
                         using (SqlCommand cmd = new SqlCommand(sql, this.connect))
                         {
                             cmd.Parameters.AddWithValue("@ImageData", lst[j]);
-                            cmd.Parameters.AddWithValue("@Name", Group_Copy1.Text);
+                            cmd.Parameters.AddWithValue("@Name", Group_Copy.Text);
                             cmd.ExecuteNonQuery();
                         }
                         j++;
@@ -269,7 +270,6 @@ namespace ComicsMaster
             //foreach (FileInfo file in directoryInfo.GetFiles())
             //    file.Delete();
         }
-
         private void Action_Checked(object sender, RoutedEventArgs e)
         {
             category = Action.Content.ToString();

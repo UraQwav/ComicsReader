@@ -4,11 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ComicsMaster"
+             Loaded="UserControl_Loaded"
              mc:Ignorable="d" 
-             d:DesignHeight="320" d:DesignWidth="184">
-    <Grid x:Name="ButtonGrid"  HorizontalAlignment="Left" Width="180" Height="320" VerticalAlignment="Top">
+             d:DesignHeight="220" d:DesignWidth="150">
+    <Grid x:Name="ButtonGrid" Background="{x:Null}" HorizontalAlignment="Left" Width="148" Height="220" VerticalAlignment="Top">
         
-        <Grid Margin="10" Background="White" Style="{StaticResource ComicsPreview}">
+        <!--<Grid Margin="10" Background="White" Style="{StaticResource ComicsPreview}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="250"></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -16,7 +17,25 @@
             <Image x:Name="ComicsWalpeper"  Grid.Row="0" Source="images/001.jpg"></Image>
             <TextBlock x:Name="NameComix" Grid.Row="1" Text="Deadpool" Margin="5,5,5,19" Foreground="DarkRed" FontSize="18" FontWeight="Bold"></TextBlock>
             <TextBlock x:Name="NameGlavaComix" Grid.Row="1" Text="Chapter 1" Foreground="DarkRed" Margin="5,30,0,0"></TextBlock>
+        </Grid>-->
+        <Grid Margin="10" Background="White" Style="{StaticResource ComicsPreview}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="0.75*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="avg" Visibility="Hidden" Width="0" Height="0"></TextBlock>
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden" CanContentScroll="False">
+                <Image x:Name="ComicsWalpeper"   Source="/ComicsMaster;component/images/001.jpg"></Image>
+            </ScrollViewer>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="NameComix" Text="Deadpool"  Foreground="DarkRed" FontSize="14" FontWeight="Bold" Margin="5,0,5,0"></TextBlock>
+                <TextBlock x:Name="NameGlavaComix" Grid.Row="1" Text="Chapter 1" Foreground="DarkRed" FontSize="10" Margin="5,0,5,0" ></TextBlock>
+            </Grid>
         </Grid>
-        
     </Grid>
+    
 </UserControl>

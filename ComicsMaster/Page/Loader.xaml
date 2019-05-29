@@ -133,7 +133,7 @@
     </UserControl.Resources>
     <Control Style="{StaticResource BusyAnimationStyle}"/>-->
     <Grid Background="white">
-        <Border Background="#FF161519"/>
-        <Image x:Name="imBackGround" Width="200" Height="200"  GIF:AnimationBehavior.SourceUri="/Images/7j9n.gif" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+        <Border Background="#FFECF0F1"/>
+        <Image x:Name="imBackGround" Width="200" Height="200" GIF:AnimationBehavior.SourceUri="/Images/7TwD.gif"/>
     </Grid>
 </UserControl>

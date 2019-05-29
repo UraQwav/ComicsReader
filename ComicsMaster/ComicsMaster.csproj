@@ -34,15 +34,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>images\icons8-бум-96.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetZip, Version=1.13.3.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.13.3\lib\net40\DotNetZip.dll</HintPath>
-    </Reference>
-    <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignColors.1.1.2\lib\net45\MaterialDesignColors.dll</HintPath>
-    </Reference>
-    <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.1360, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialDesignThemes.2.6.0-ci1360\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -50,23 +47,11 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.6.0-preview4.19212.13\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Security.AccessControl, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.AccessControl.4.6.0-preview4.19212.13\lib\net461\System.Security.AccessControl.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Permissions, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Permissions.4.6.0-preview4.19212.13\lib\net461\System.Security.Permissions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Security.Principal.Windows, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Security.Principal.Windows.4.6.0-preview4.19212.13\lib\net461\System.Security.Principal.Windows.dll</HintPath>
-    </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
@@ -82,9 +67,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WpfAnimatedGif, Version=1.4.18.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WpfAnimatedGif.1.4.18\lib\net\WpfAnimatedGif.dll</HintPath>
-    </Reference>
     <Reference Include="XamlAnimatedGif, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XamlAnimatedGif.1.2.1\lib\net45\XamlAnimatedGif.dll</HintPath>
     </Reference>
@@ -102,16 +84,37 @@
     <Compile Include="Page\ComicsPreview.xaml.cs">
       <DependentUpon>ComicsPreview.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page\Comments.xaml.cs">
+      <DependentUpon>Comments.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page\Iessie.xaml.cs">
       <DependentUpon>Iessie.xaml</DependentUpon>
     </Compile>
     <Compile Include="Page\Loader.xaml.cs">
       <DependentUpon>Loader.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Page\Recomend.xaml.cs">
+      <DependentUpon>Recomend.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Page\SendComics.xaml.cs">
+      <DependentUpon>SendComics.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Page\SignUp.xaml.cs">
       <DependentUpon>SignUp.xaml</DependentUpon>
     </Compile>
     <Page Include="Page\ADMINPAGE.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\Comments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\Recomend.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Page\SendComics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -295,7 +298,10 @@
     <Resource Include="images\icons8-sorting-52 %282%29.png" />
     <Resource Include="images\icons8-update-file-48 %281%29.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Dinamic Link Librarys\DotNetZip.dll" />
+    <EmbeddedResource Include="Dinamic Link Librarys\XamlAnimatedGif.dll" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="images\icons8-audio-filled-50.png" />
     <Resource Include="images\icons8-end-48.png" />
@@ -307,6 +313,46 @@
     <Resource Include="images\icons8-audio-filled-50 %281%29.png" />
     <Resource Include="images\icons8-end-48 %281%29.png" />
     <Resource Include="images\icons8-no-audio-filled-50 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-стрелка-влево-в-круге-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-бум-96.ico" />
+    <Resource Include="images\icons8-вспышка-взрыва-96.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-закладка-лента-96 %281%29.png" />
+    <Resource Include="images\icons8-закладка-лента-96.png" />
+    <Resource Include="images\icons8-звезда-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-leanpub-96.png" />
+    <Resource Include="images\icons8-заполненный-круг-96 %281%29.png" />
+    <Resource Include="images\icons8-заполненный-круг-96.png" />
+    <Resource Include="images\icons8-мусор-90.png" />
+    <Resource Include="images\icons8-налево-90.png" />
+    <Resource Include="images\icons8-сложение-filled-500.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-налево-50.png" />
+    <Resource Include="images\icons8-налево-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-сложение-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-звезда-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-звезда-64 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-комментарии-filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icons8-отправить-рассылку-50.png" />
+    <Resource Include="images\icons8-отправлено-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

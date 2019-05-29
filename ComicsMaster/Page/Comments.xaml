@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="ComicsMaster.Page.Comments"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ComicsMaster.Page"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1130">
+    <Grid  x:Name="comments" Background="White">
+        <ScrollViewer Margin="0,55,0,100">
+            <Grid x:Name="Content">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+        </ScrollViewer>
+        <Grid x:Name="Header" Height="45" Style="{StaticResource ShadowGridDown}" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="9*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.ColumnSpan="10" Background="#FF660000"></Border>
+            <Grid Background="{x:Null}" Height="35">
+                <Image x:Name="backImage" Style="{StaticResource SphereShadowImage}" Source="/ComicsMaster;component/images/icons8-налево-filled-50.png"></Image>
+            </Grid>
+            <TextBlock x:Name="ComicsName" FontSize="24" Foreground="White" Grid.Column="1"></TextBlock>
+        </Grid>
+        <Grid x:Name="Footer" Height="100" Background="White" VerticalAlignment="Bottom" Style="{StaticResource ShadowGridUp}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="9*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="Message" Grid.Column="1" Margin="20" TextWrapping="Wrap"></TextBox>
+
+            <Grid Grid.Column="0">
+                <Image Width="80"  Source="/ComicsMaster;component/images/16204260.jpg" HorizontalAlignment="Right"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Image Width="60" Source="/ComicsMaster;component/images/icons8-отправлено-48.png" Margin="10,0,0,0" HorizontalAlignment="Left" MouseDown="Image_MouseDown"></Image>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

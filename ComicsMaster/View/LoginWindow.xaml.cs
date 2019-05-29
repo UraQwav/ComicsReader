@@ -17,6 +17,10 @@ namespace ComicsMaster
     {
         public static string flag { get; set; }
     }
+    static class UserData
+    {
+        public static string Login { get; set; }
+    }
     #endregion
     public partial class LoginWindow : Window
     {
@@ -48,6 +52,7 @@ namespace ComicsMaster
                 this.WindowState = WindowState.Maximized;
                 Shadow.Margin = new Thickness(0, 0, 0, 0);
             }
+
             else if (this.WindowState == WindowState.Maximized)
             {
                 this.WindowState = WindowState.Normal;

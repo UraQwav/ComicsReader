@@ -7,17 +7,27 @@
         xmlns:GIF="https://github.com/XamlAnimatedGif/XamlAnimatedGif"
         Loaded="Window_Loaded"    
         mc:Ignorable="d"
-        Icon="/ComicsMaster;component/images/icons8-grey-48.png"
         Title="ComicMaster" Height="700" Width="1130"
-        WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}">
+        WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}" ResizeMode="CanResizeWithGrip">
     <Grid x:Name="Shadow" Style="{StaticResource ComicMasterBackground}" Margin="10,10,10,10">
         <Grid Height="55" VerticalAlignment="Top">
             <Border Background="DarkRed"></Border>
         </Grid>
+        
         <Grid x:Name="ParentGrid" Margin="0,25,0,0" Background="#FFEAEAEA">
-            <ScrollViewer>
-                <Grid x:Name="Content" Margin="20,0,0,0"/>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <Grid x:Name="BackgroundIessie" >
+                    <Image x:Name="TitleImages"></Image>
+                </Grid>
             </ScrollViewer>
+            <ScrollViewer>
+                <Grid>
+                    <Grid x:Name="Content" Margin="20,0,0,35"/>
+                </Grid>
+            </ScrollViewer>
+            <Grid>
+                <Grid x:Name="ContentToIessie" Margin="0,0,0,35"/>
+            </Grid>
             <Grid x:Name="BurgerGridMenu" Style="{StaticResource ShadowGridUp}" VerticalAlignment="Bottom" Height="40" Background="White">
                 <Grid.ColumnDefinitions>
                    
@@ -63,7 +73,7 @@
             </Grid>
         </Grid>
         <Grid x:Name="FullMenu" Width="0" HorizontalAlignment="Left">
-            <ScrollViewer  HorizontalAlignment="Left" Background="{x:Null}">
+            <ScrollViewer HorizontalAlignment="Left" Background="{x:Null}" VerticalScrollBarVisibility="Hidden" >
                 <Grid Width="262" HorizontalAlignment="Left" Background="DarkRed">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="23"></RowDefinition>
@@ -141,6 +151,6 @@
             <Button Style="{StaticResource ButtonLoginMax}" Height="15" Width="15" HorizontalAlignment="Left" Margin="60,5,5,5" Background="DarkOrange" Click="Button_Click_2"></Button>
         </Grid>
         <WebBrowser x:Name="WebPlayer" Width="0" LoadCompleted="WebPlayer_LoadCompleted" VerticalAlignment="Top"  Source="https://www.youtube.com/watch?v=nGr4ZpHRmh4" Margin="0,55,0,64"></WebBrowser>
-
+       
     </Grid>
 </Window>

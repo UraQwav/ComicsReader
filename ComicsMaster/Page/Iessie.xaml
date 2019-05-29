@@ -4,13 +4,95 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ComicsMaster"
+             xmlns:local2="clr-namespace:ComicsMaster.Page"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <ScrollViewer>
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="700" d:DesignWidth="1130">
+    <Grid x:Name="Parent">
+        <ScrollViewer Margin="0,45,0,0">
             <Grid x:Name="Content">
-                <Image x:Name="TitleImages" Height="320" VerticalAlignment="Top"></Image>
+                <Image x:Name="TitleImages" Opacity="0" VerticalAlignment="Top"></Image>
+
+                <Grid Style="{StaticResource SphereShadowGrid}" Background="#FAFAFA" Margin="25,400,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="250"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="70"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Border Grid.RowSpan="2" Background="#FF660000"></Border>
+                        <TextBlock x:Name="ComicsDiscription" FontSize="16" Foreground="White" TextWrapping="Wrap" Margin="15,20,15,0"></TextBlock>
+                        <TextBlock FontSize="18" Grid.Row="1"  Foreground="White" Margin="0,21,225,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100">You mark:</TextBlock>
+                        <Grid Grid.Row="1" Margin="0,15,75,0"  VerticalAlignment="Top" HorizontalAlignment="Right">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="Star1" Height="45" Grid.Column="0" Source="/ComicsMaster;component/images/icons8-звезда-64 (2).png" MouseDown="Star1_MouseDown" MouseEnter="Star1_MouseEnter" MouseLeave="Star1_MouseLeave"></Image>
+                            <Image x:Name="Star2" Height="45" Grid.Column="1" Source="/ComicsMaster;component/images/icons8-звезда-64 (2).png" MouseDown="Star2_MouseDown" MouseEnter="Star2_MouseEnter" MouseLeave="Star1_MouseLeave"></Image>
+                            <Image x:Name="Star3" Height="45" Grid.Column="2" Source="/ComicsMaster;component/images/icons8-звезда-64 (2).png" MouseDown="Star3_MouseDown" MouseEnter="Star3_MouseEnter" MouseLeave="Star1_MouseLeave"></Image>
+                        </Grid>
+
+                    </Grid>
+                    <Grid Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Height="40">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75"></ColumnDefinition>
+                            <ColumnDefinition Width="75"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="BurgerRecomend" Grid.Column="0"  MouseDown="BurgerRecomend_MouseDown"  MouseEnter="BurgerRecomend_MouseEnter" MouseLeave="BurgerRecomend_MouseLeave" Background="{x:Null}">
+                            <TextBlock x:Name="Chapters" VerticalAlignment="Center" HorizontalAlignment="Center">Chapters</TextBlock>
+                            <Rectangle x:Name="BurgerRecomendR" Height="3" Width="75" VerticalAlignment="Bottom" HorizontalAlignment="Center" Fill="DarkRed" ></Rectangle>
+                        </Grid>
+                        <Grid x:Name="BurgerUpdate" Grid.Column="1" MouseEnter="BurgerUpdate_MouseEnter" MouseLeave="BurgerRecomend_MouseLeave" MouseDown="BurgerUpdate_MouseDown" Background="{x:Null}" >
+                            <TextBlock x:Name="Videos" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Gray" >Videos</TextBlock>
+                            <Rectangle x:Name="BurgerUpdateR" Height="3" Width="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Fill="DarkRed" ></Rectangle>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="2" x:Name="ContentForButton" Margin="25,50,25,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </Grid>
+                <Grid Width="90" Height="90" Margin="0,355,25,0" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Image Style="{StaticResource SphereShadowImage}" Width="90" Source="/ComicsMaster;component/images/icons8-заполненный-круг-96 (1).png" Height="90" VerticalAlignment="Top" HorizontalAlignment="Right"></Image>
+                    <Image Width="45" x:Name="ReadComics"  Margin="0,22.5,22.5,0" Source="/ComicsMaster;component/images/icons8-leanpub-96.png" HorizontalAlignment="Right" VerticalAlignment="Top"></Image>
+                </Grid>
             </Grid>
         </ScrollViewer>
+        <Grid x:Name="Header" Height="45" Style="{StaticResource ShadowGridDown}" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="9*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.ColumnSpan="10" Background="#FF660000"></Border>
+
+            <Grid Background="{x:Null}" Height="35">
+                <Image x:Name="backImage" Style="{StaticResource SphereShadowImage}" Source="/ComicsMaster;component/images/icons8-налево-filled-50.png"></Image>
+            </Grid>
+            <TextBlock x:Name="ComicsName" FontSize="24" Foreground="White" Grid.Column="1"></TextBlock>
+            <Grid Grid.Column="3" Height="35" Background="{x:Null}" MouseDown="Fafourite_MouseDown">
+                <Image x:Name="Fafourite"  Style="{StaticResource SphereShadowImage}"  Source="/ComicsMaster;component/images/icons8-сложение-filled-500.png"></Image>
+            </Grid>
+            <Grid Grid.Column="4" Height="30" Background="{x:Null}" MouseDown="Comment_MouseDown">
+                <Image x:Name="Comment"  Style="{StaticResource SphereShadowImage}"  Source="/ComicsMaster;component/images/icons8-комментарии-filled-50.png"></Image>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

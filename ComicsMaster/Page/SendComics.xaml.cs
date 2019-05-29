@@ -12,23 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data;
-using System.Data.SqlClient; 
-namespace ComicsMaster
+
+namespace ComicsMaster.Page
 {
-    public partial class ComicsPreview : UserControl
+    /// <summary>
+    /// Логика взаимодействия для SendComics.xaml
+    /// </summary>
+    public partial class SendComics : UserControl
     {
-        string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-        double starAvg;
-        public ComicsPreview()
+        public SendComics()
         {
             InitializeComponent();
-           
-        }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
-        {
-            
         }
     }
 }

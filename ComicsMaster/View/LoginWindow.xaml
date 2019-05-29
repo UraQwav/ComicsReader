@@ -7,7 +7,6 @@
         
         xmlns:local="clr-namespace:ComicsMaster"
         mc:Ignorable="d"
-        Icon="/ComicsMaster;component/images/icons8-grey-48.png"
         Title="MainWindow" Height="480" Width="720" 
         WindowStyle="None" WindowStartupLocation="CenterScreen" AllowsTransparency="True" Background="{x:Null}" ResizeMode="NoResize">
     <!--"#283955"-->
