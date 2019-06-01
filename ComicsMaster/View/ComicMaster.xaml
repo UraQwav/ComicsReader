@@ -123,11 +123,7 @@
                     </Grid>
                     <Separator Grid.Row="7" Margin="5,0,5,0"/>
                     <Label Grid.Row="8" Foreground="White" Margin="5,5,8,0">Others</Label>
-                    <Grid x:Name="SettingsButton" Grid.Row="9" Margin="0,10,0,0" Height="40">
-                        <Border x:Name="SettingsBackground" Background="DarkRed" Opacity="0"></Border>
-                        <Image Source="/ComicsMaster;component/images/icons8-services-60.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
-                        <Button x:Name="SettingsButton2" Style="{StaticResource ButtonMenu}"  Height="25" Click="SettingsButton2_Click">Settings</Button>
-                    </Grid>
+                    
                     <Grid x:Name="BrowserButton" Grid.Row="10" Margin="0,10,0,0" Height="40">
                         <Border x:Name="BrowserBackground" Background="DarkRed" Opacity="0"></Border>
                         <Image Source="/ComicsMaster;component/images/icons8-internet-64.png" Height="25" Margin="10,5,0,0" HorizontalAlignment="Left"  VerticalAlignment="Center"/>

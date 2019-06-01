@@ -42,7 +42,7 @@ namespace ComicsMaster
             if (MousedownOn == true)
             {
                 Fafourite.Height = 35;
-                Fafourite.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-сложение-50.png"));
+                Fafourite.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-сложение-50.png"));
                 var connect = new SqlConnection(connectionString);
                 connect.Open();
                 string sql = string.Format($"Delete  FAVOURITES Where IDFAFOURITECOMICS = '{ComicsName.Text}'");
@@ -71,7 +71,7 @@ namespace ComicsMaster
                 }
                 connect.Close();
                 Fafourite.Height = 30;
-                Fafourite.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-мусор-90.png"));
+                Fafourite.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-мусор-90.png"));
                     MousedownOn = true;
             }
         }
@@ -117,9 +117,9 @@ namespace ComicsMaster
                 cmd.ExecuteNonQuery();
             }
             connect.Close();
-            Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
-            Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
+            Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+            Star2.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64 (2).png"));
+            Star3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64 (2).png"));
             Star1.MouseEnter -= Star1_MouseEnter;
             Star2.MouseEnter -= Star2_MouseEnter;
             Star3.MouseEnter -= Star3_MouseEnter;
@@ -147,9 +147,9 @@ namespace ComicsMaster
                 cmd.ExecuteNonQuery();
             }
             connect.Close();
-            Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
+            Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+            Star2.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64.png"));
+            Star3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64 (2).png"));
 
             Star1.MouseEnter -= Star1_MouseEnter;
             Star2.MouseEnter -= Star2_MouseEnter;
@@ -178,9 +178,9 @@ namespace ComicsMaster
                 cmd.ExecuteNonQuery();
             }
             connect.Close();
-            Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
+            Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+            Star2.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64.png"));
+            Star3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64.png"));
 
             Star1.MouseEnter -= Star1_MouseEnter;
             Star2.MouseEnter -= Star2_MouseEnter;
@@ -195,23 +195,24 @@ namespace ComicsMaster
 
         private void Star1_MouseEnter(object sender, MouseEventArgs e)
         {
-            Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
-            Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
+            Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+            Star2.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64 (2).png"));
+            Star3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64 (2).png"));
         }
 
         private void Star2_MouseEnter(object sender, MouseEventArgs e)
         {
-            Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
+            Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+            Star2.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64.png"));
+            Star3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64 (2).png"));
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             var sqlConect = new SqlConnection(connectionString);
             sqlConect.Open();
-            int sqlrezult, sqlrezult2, sqlrezult3;
+            int sqlrezult, sqlrezult2;
+            string sqlrezult3;
             string sq1 = string.Format("SELECT COUNT(*) from FAVOURITES WHERE" + "( IDUSERLOGIN=" + "@LOG) and ( IDFAFOURITECOMICS=" + "@Name)");
             using (SqlCommand cmd = new SqlCommand(sq1, sqlConect))
             {
@@ -220,7 +221,8 @@ namespace ComicsMaster
                 sqlrezult = (int)cmd.ExecuteScalar();
             }
             string sq2 = string.Format("SELECT COUNT(*) from Mark WHERE" + "( IDUSERNAME=" + "@LOG) and ( IDNAMECOMICS=" + "@Name)");
-            using (SqlCommand cmd = new SqlCommand(sq2, sqlConect))
+            using (
+                SqlCommand cmd = new SqlCommand(sq2, sqlConect))
             {
                 cmd.Parameters.AddWithValue("@LOG", NameSignIN.flag);
                 cmd.Parameters.AddWithValue("@Name", ComicsName.Text);
@@ -237,57 +239,108 @@ namespace ComicsMaster
             {
                 var sqlConect2 = new SqlConnection(connectionString);
                 sqlConect.Open();
-                string sq3 = string.Format("SELECT Star from Mark WHERE" + "( IDUSERNAME=" + "@LOG) and ( IDNAMECOMICS=" + "@Name)");
-                using (SqlCommand cmd = new SqlCommand(sq2, sqlConect))
+                string sq3 = string.Format("SELECT * from Mark WHERE" + "( IDUSERNAME=" + "@LOG) and ( IDNAMECOMICS=" + "@Name)");
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    cmd.Parameters.AddWithValue("@LOG", NameSignIN.flag);
-                    cmd.Parameters.AddWithValue("@Name", ComicsName.Text);
-                    sqlrezult3 = (int)cmd.ExecuteScalar();
+                    connection.Open();
+                    string sql = $"SELECT Star from MARK WHERE ( IDUSERNAME='{NameSignIN.flag}') and ( IDNAMECOMICS='{ComicsName.Text}')";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        try
+                        {
+                            sqlrezult3 = reader.GetString(4);
+
+                            connection.Close();
+
+                            if (sqlrezult3 == "1")
+                            {
+                                Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+                                Star2.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64 (2).png"));
+                                Star3.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64 (2).png"));
+                            }
+                            if (sqlrezult3 == "2")
+                            {
+                                Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+                                Star2.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+                                Star3.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64 (2).png"));
+                            }
+                            if (sqlrezult3 == "3")
+                            {
+                                Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+                                Star2.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+                                Star3.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+                            }
+                        }
+                        catch { }
+                    };
                 }
-                if (sqlrezult3 == 1)
-                {
-                    Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-                    Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
-                    Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
-                }
-                if (sqlrezult3 == 2)
-                {
-                    Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-                    Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-                    Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
-                }
-                if (sqlrezult3 == 3)
-                {
-                    Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-                    Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-                    Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-                }
-                Star1.MouseEnter -= Star1_MouseEnter;
-                Star2.MouseEnter -= Star2_MouseEnter;
-                Star3.MouseEnter -= Star3_MouseEnter;
-                Star1.MouseLeave -= Star1_MouseLeave;
-                Star2.MouseLeave -= Star1_MouseLeave;
-                Star3.MouseLeave -= Star1_MouseLeave;
-                Star1.MouseDown -= Star1_MouseDown;
-                Star2.MouseDown -= Star2_MouseDown;
-                Star3.MouseDown -= Star3_MouseDown;
+                    Star1.MouseEnter -= Star1_MouseEnter;
+                    Star2.MouseEnter -= Star2_MouseEnter;
+                    Star3.MouseEnter -= Star3_MouseEnter;
+                    Star1.MouseLeave -= Star1_MouseLeave;
+                    Star2.MouseLeave -= Star1_MouseLeave;
+                    Star3.MouseLeave -= Star1_MouseLeave;
+                    Star1.MouseDown -= Star1_MouseDown;
+                    Star2.MouseDown -= Star2_MouseDown;
+                    Star3.MouseDown -= Star3_MouseDown;
+                
                 sqlConect2.Close();
             }
 
+            try
+            {
+                var str = NameSignIN.flag;
+                var sqlConectHistory = new SqlConnection(connectionString);
+                int sqlrezult4;
+                sqlConectHistory.Open();
+                string sq4 = string.Format("SELECT COUNT(*) from HISTORY WHERE" + "( IDHISTORYCOMICS=" + "@LOG)");
+                using (SqlCommand cmd = new SqlCommand(sq4, sqlConectHistory))
+                {
+                    cmd.Parameters.AddWithValue("@LOG", ComicsName.Text);
+                    sqlrezult4 = (int)cmd.ExecuteScalar();
+                }
+                sqlConect.Close();
+                if (sqlrezult < 1)
+                {
+                    var connectHistory = new SqlConnection(connectionString);
+                    connectHistory.Open();
+                    string sqlQ = string.Format("Insert Into HISTORY(IDUSERLOGIN,IDHISTORYCOMICS,IDCOMICSCOVER,IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSDISCRIPTION) Values(@IDUSERLOGIN,@IDHISTORYCOMICS,@IDCOMICSCOVER,@IDPARENTCATEGORY,@COMICSCOVERWALPAPER,@COMICSCOVERWALPAPERTOIESSIE,@COMICSDISCRIPTION)");
+                    using (SqlCommand cmd = new SqlCommand(sqlQ, connectHistory))
+                    {
+                        cmd.Parameters.AddWithValue("@IDUSERLOGIN", NameSignIN.flag);
+                        cmd.Parameters.AddWithValue("@IDHISTORYCOMICS", ComicsName.Text);
+                        cmd.Parameters.AddWithValue("@IDCOMICSCOVER", IDCOMICSCOVER);
+                        cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", IDPARENTCATEGORY);
+                        cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPER", COMICSCOVERWALPAPER);
+                        cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", COMICSCOVERWALPAPERTOIESSIE);
+                        cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", ComicsDiscription.Text);
+                        cmd.ExecuteNonQuery();
+                    }
+                    connectHistory.Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error");
+            }
+
+
         }
-            
+
         private void Star3_MouseEnter(object sender, MouseEventArgs e)
         {
-            Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
-            Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64.png"));
+            Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64.png"));
+            Star2.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64.png"));
+            Star3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64.png"));
         }
 
         private void Star1_MouseLeave(object sender, MouseEventArgs e)
         {
-            Star1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
-            Star2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
-            Star3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-звезда-64 (2).png"));
+            Star1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-звезда-64 (2).png"));
+            Star2.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64 (2).png"));
+            Star3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-звезда-64 (2).png"));
         }
 
         private void Comment_MouseDown(object sender, MouseButtonEventArgs e)

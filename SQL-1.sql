@@ -87,3 +87,14 @@ IDNAMECOMICS NVARCHAR(255),
 IDUSERNAME NVARCHAR(255),
 STAR Float);
 
+Select * from LOGINANDPASSWORD;
+Select * from  USERSDATA;
+Select * from  IMAGESITEMS;
+Select * from  COMICSCOVERITEM;
+Select * from  HISTORY;
+Select * from  COMICSCOVER; 
+Select * from  CATEGORY;
+Select * from  FAVOURITES;
+Select * from  USERIMAGE;
+Select * from  COMICSCOMMENT;
+Select * from  MARK;

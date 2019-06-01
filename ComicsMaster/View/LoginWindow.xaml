@@ -33,7 +33,6 @@
             <PasswordBox x:Name="PasswordBox" Grid.Row="5"  Style="{StaticResource InputControlStyle}" Password="mCNXBZqWERTY0776246qWERTY"></PasswordBox>
             <Button Click="SignIn_Click" Grid.Row="6" Style="{StaticResource ButtonSignStyle}">SIGN IN</Button>
             <Separator Grid.Row="7"/>
-            <Button Grid.Row="8" Style="{StaticResource ButtonLinkStyle}">Forgot password?</Button>
             <Button x:Name="SignUpButton" Grid.Row="9" Style="{StaticResource ButtonLinkStyle}" Click="SignUpButton_Click">SIGN UP</Button>
 
         </Grid>

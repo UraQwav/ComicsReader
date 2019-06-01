@@ -166,7 +166,7 @@ namespace ComicsMaster.Page
                         }
                         buttonMarginTop = 0; buttonMarginLeft = 0; firstbutton = true;
                         #endregion
-                        iessie.backImage.MouseDown += (sen, t) => { Comics.Content.Children.Clear(); Comics.ContentToIessie.Children.Clear(); Comics.BackgroundIessie.Children.Clear(); };
+                        iessie.backImage.MouseDown += (sen, t) => { Comics.Content.Children.Clear(); Comics.ContentToIessie.Children.Clear(); Comics.BackgroundIessie.Children.Clear(); Comics.Content.Children.Add(new Recomend(Comics)); };
                         comicsPreview.ButtonGrid.MouseDown += (source, e) =>
                         {
                             Comics.Content.Children.Clear();

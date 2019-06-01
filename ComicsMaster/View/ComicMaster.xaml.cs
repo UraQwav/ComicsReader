@@ -71,7 +71,6 @@ namespace ComicsMaster
                 CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
             }
@@ -82,7 +81,6 @@ namespace ComicsMaster
                 CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
             }
@@ -93,7 +91,6 @@ namespace ComicsMaster
                 CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
                 HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
             }
@@ -104,7 +101,6 @@ namespace ComicsMaster
                 CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
                 FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
             }
@@ -115,18 +111,6 @@ namespace ComicsMaster
                 CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
-                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-            }
-            if (rectangle == SettingsBackground)
-            {
-                RecommendationBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(RecommendationBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                LatestUpdateBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(LatestUpdateBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
                 BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
             }
@@ -137,7 +121,6 @@ namespace ComicsMaster
                 CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
                 addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
             }
@@ -148,7 +131,6 @@ namespace ComicsMaster
                 CategoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(CategoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 HistoryBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(HistoryBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 FavouritesBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(FavouritesBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
-                SettingsBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(SettingsBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 BrowserBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(BrowserBackground.Opacity, 0, TimeSpan.FromSeconds(timeOpacity)));
                 addBackground.BeginAnimation(OpacityProperty, new DoubleAnimation(addBackground.Opacity, 1, TimeSpan.FromSeconds(timeOpacity)));
             }
@@ -329,43 +311,7 @@ namespace ComicsMaster
                         ContentToIessie.Children.Clear();
                         ContentToIessie.Children.Add(iessie);
                         BackgroundIessie.Children.Add(image);
-                        try
-                        {
-                            var str = NameSignIN.flag;
-                            var sqlConectHistory = new SqlConnection(connectionString);
-                            int sqlrezult;
-                            sqlConectHistory.Open();
-                            string sq1 = string.Format("SELECT COUNT(*) from HISTORY WHERE" + "( IDHISTORYCOMICS=" + "@LOG)");
-                            using (SqlCommand cmd = new SqlCommand(sq1, sqlConectHistory))
-                            {
-                                cmd.Parameters.AddWithValue("@LOG", name_Rest);
-                                sqlrezult = (int)cmd.ExecuteScalar();
-                            }
-                            sqlConect.Close();
-                            if (sqlrezult < 1)
-                            {
-                                var connectHistory = new SqlConnection(connectionString);
-                                connectHistory.Open();
-                                string sqlQ = string.Format("Insert Into HISTORY(IDUSERLOGIN,IDHISTORYCOMICS,IDCOMICSCOVER,IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSDISCRIPTION) Values(@IDUSERLOGIN,@IDHISTORYCOMICS,@IDCOMICSCOVER,@IDPARENTCATEGORY,@COMICSCOVERWALPAPER,@COMICSCOVERWALPAPERTOIESSIE,@COMICSDISCRIPTION)");
-                                using (SqlCommand cmd = new SqlCommand(sqlQ, connectHistory))
-                                {
-                                    cmd.Parameters.AddWithValue("@IDUSERLOGIN", str);
-                                    cmd.Parameters.AddWithValue("@IDHISTORYCOMICS", name_Rest);
-                                    cmd.Parameters.AddWithValue("@IDCOMICSCOVER", nameas);
-                                    cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", name_kategory);
-                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPER", data);
-                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", data2);
-                                    cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", iessie.ComicsDiscription.Text);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                connectHistory.Close();
-                            }
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Error");
-                        }
-
+         
                     };
                     if (WidthGrid < (int)Content.ActualWidth)
                     {
@@ -507,43 +453,7 @@ namespace ComicsMaster
                         ContentToIessie.Children.Clear();
                         ContentToIessie.Children.Add(iessie);
                         BackgroundIessie.Children.Add(image);
-                        try
-                        {
-                            var str = NameSignIN.flag;
-                            var sqlConectHistory = new SqlConnection(connectionString);
-                            int sqlrezult;
-                            sqlConectHistory.Open();
-                            string sq1 = string.Format("SELECT COUNT(*) from HISTORY WHERE" + "( IDHISTORYCOMICS=" + "@LOG)");
-                            using (SqlCommand cmd = new SqlCommand(sq1, sqlConectHistory))
-                            {
-                                cmd.Parameters.AddWithValue("@LOG", name_Rest);
-                                sqlrezult = (int)cmd.ExecuteScalar();
-                            }
-                            sqlConect.Close();
-                            if (sqlrezult < 1)
-                            {
-                                var connectHistory = new SqlConnection(connectionString);
-                                connectHistory.Open();
-                                string sqlQ = string.Format("Insert Into HISTORY(IDUSERLOGIN,IDHISTORYCOMICS,IDCOMICSCOVER,IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE) Values(@IDUSERLOGIN,@IDHISTORYCOMICS,@IDCOMICSCOVER,@IDPARENTCATEGORY,@COMICSCOVERWALPAPER,@COMICSCOVERWALPAPERTOIESSIE)");
-                                using (SqlCommand cmd = new SqlCommand(sqlQ, connectHistory))
-                                {
-                                    cmd.Parameters.AddWithValue("@IDUSERLOGIN", str);
-                                    cmd.Parameters.AddWithValue("@IDHISTORYCOMICS", name_Rest);
-                                    cmd.Parameters.AddWithValue("@IDCOMICSCOVER", nameas);
-                                    cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", name_kategory);
-                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPER", data);
-                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", data2);
-                                    cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", DiscriptionComics);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                connectHistory.Close();
-                            }
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Error");
-                        }
-
+                        
                     };
                     if (WidthGrid < (int)Content.ActualWidth)
                     {
@@ -727,42 +637,7 @@ namespace ComicsMaster
                     ContentToIessie.Children.Clear();
                     ContentToIessie.Children.Add(iessie);
                     BackgroundIessie.Children.Add(image);
-                    try
-                    {
-                        var str = NameSignIN.flag;
-                        var sqlConectHistory = new SqlConnection(connectionString);
-                        int sqlrezult;
-                        sqlConectHistory.Open();
-                        string sq1 = string.Format("SELECT COUNT(*) from HISTORY WHERE" + "( IDHISTORYCOMICS=" + "@LOG)");
-                        using (SqlCommand cmd = new SqlCommand(sq1, sqlConectHistory))
-                        {
-                            cmd.Parameters.AddWithValue("@LOG", name_Rest);
-                            sqlrezult = (int)cmd.ExecuteScalar();
-                        }
-                        sqlConect.Close();
-                        if (sqlrezult < 1)
-                        {
-                            var connectHistory = new SqlConnection(connectionString);
-                            connectHistory.Open();
-                            string sqlQ = string.Format("Insert Into HISTORY(IDUSERLOGIN,IDHISTORYCOMICS,IDCOMICSCOVER,IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSDISCRIPTION) Values(@IDUSERLOGIN,@IDHISTORYCOMICS,@IDCOMICSCOVER,@IDPARENTCATEGORY,@COMICSCOVERWALPAPER,@COMICSCOVERWALPAPERTOIESSIE,@COMICSDISCRIPTION)");
-                            using (SqlCommand cmd = new SqlCommand(sqlQ, connectHistory))
-                            {
-                                cmd.Parameters.AddWithValue("@IDUSERLOGIN", str);
-                                cmd.Parameters.AddWithValue("@IDHISTORYCOMICS", name_Rest);
-                                cmd.Parameters.AddWithValue("@IDCOMICSCOVER", nameas);
-                                cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", name_kategory);
-                                cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPER", data);
-                                cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", data2);
-                                cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", iessie.ComicsDiscription.Text);
-                                cmd.ExecuteNonQuery();
-                            }
-                            connectHistory.Close();
-                        }
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Error");
-                    }
+                    
 
                     };
                     if (WidthGrid < (int)Content.ActualWidth)
@@ -904,42 +779,7 @@ namespace ComicsMaster
                         ContentToIessie.Children.Clear();
                         ContentToIessie.Children.Add(iessie);
                         BackgroundIessie.Children.Add(image);
-                        try
-                        {
-                            var str = NameSignIN.flag;
-                            var sqlConectHistory = new SqlConnection(connectionString);
-                            int sqlrezult;
-                            sqlConectHistory.Open();
-                            string sq1 = string.Format("SELECT COUNT(*) from HISTORY WHERE" + "( IDHISTORYCOMICS=" + "@LOG)");
-                            using (SqlCommand cmd = new SqlCommand(sq1, sqlConectHistory))
-                            {
-                                cmd.Parameters.AddWithValue("@LOG", name_Rest);
-                                sqlrezult = (int)cmd.ExecuteScalar();
-                            }
-                            sqlConect.Close();
-                            if (sqlrezult < 1)
-                            {
-                                var connectHistory = new SqlConnection(connectionString);
-                                connectHistory.Open();
-                                string sqlQ = string.Format("Insert Into HISTORY(IDUSERLOGIN,IDHISTORYCOMICS,IDCOMICSCOVER,IDPARENTCATEGORY,COMICSCOVERWALPAPER,COMICSCOVERWALPAPERTOIESSIE,COMICSDISCRIPTION) Values(@IDUSERLOGIN,@IDHISTORYCOMICS,@IDCOMICSCOVER,@IDPARENTCATEGORY,@COMICSCOVERWALPAPER,@COMICSCOVERWALPAPERTOIESSIE,@COMICSDISCRIPTION)");
-                                using (SqlCommand cmd = new SqlCommand(sqlQ, connectHistory))
-                                {
-                                    cmd.Parameters.AddWithValue("@IDUSERLOGIN", str);
-                                    cmd.Parameters.AddWithValue("@IDHISTORYCOMICS", name_Rest);
-                                    cmd.Parameters.AddWithValue("@IDCOMICSCOVER", nameas);
-                                    cmd.Parameters.AddWithValue("@IDPARENTCATEGORY", name_kategory);
-                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPER", data);
-                                    cmd.Parameters.AddWithValue("@COMICSCOVERWALPAPERTOIESSIE", data2);
-                                    cmd.Parameters.AddWithValue("@COMICSDISCRIPTION", iessie.ComicsDiscription.Text);
-                                    cmd.ExecuteNonQuery();
-                                }
-                                connectHistory.Close();
-                            }
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Error");
-                        }
+                        
 
                     };
                     if (WidthGrid < (int)Content.ActualWidth)
@@ -980,7 +820,7 @@ namespace ComicsMaster
                 addButton.Height = 40;
             }
             BurgerRecomendR.BeginAnimation(Rectangle.WidthProperty, new DoubleAnimation(BurgerRecomendR.ActualWidth, BurgerRecomend.ActualWidth-10, TimeSpan.FromSeconds(timeOpacity)));
-            try { ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48 (1).png")); } catch { };
+            try { ImageN1.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-gas-48 (1).png")); } catch { };
         }
         private void Burger_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -999,10 +839,10 @@ namespace ComicsMaster
             BurgerCategoryR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerCategoryR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
             try
             {
-                ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48 (1).png"));
-                ImageN2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-update-file-48.png"));
-                ImageN4.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-sorting-52 (1).png"));
-                ImageN3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-favorite-folder-filled-50 (1).png"));
+                ImageN1.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-gas-48 (1).png"));
+                ImageN2.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-update-file-48.png"));
+                ImageN4.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-sorting-52 (1).png"));
+                ImageN3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-favorite-folder-filled-50 (1).png"));
             }
             catch { }
             #endregion
@@ -1021,10 +861,10 @@ namespace ComicsMaster
             BurgerCategoryR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerCategoryR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
             try
             {
-                ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48.png"));
-                ImageN4.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-sorting-52 (1).png"));
-                ImageN3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-favorite-folder-filled-50 (1).png"));
-                ImageN2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-update-file-48 (1).png"));
+                ImageN1.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-gas-48.png"));
+                ImageN4.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-sorting-52 (1).png"));
+                ImageN3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-favorite-folder-filled-50 (1).png"));
+                ImageN2.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-update-file-48 (1).png"));
             }
             catch { }
             #endregion
@@ -1042,10 +882,10 @@ namespace ComicsMaster
             BurgerCategoryR.BeginAnimation(WidthProperty, new DoubleAnimation(BurgerCategoryR.ActualWidth, 0, TimeSpan.FromSeconds(timeOpacity)));
             try
             {
-                ImageN2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-update-file-48.png"));
-                ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48.png"));
-                ImageN4.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-sorting-52 (1).png"));
-                ImageN3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-favorite-folder-filled-50 (2).png"));
+                ImageN2.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-update-file-48.png"));
+                ImageN1.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-gas-48.png"));
+                ImageN4.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-sorting-52 (1).png"));
+                ImageN3.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-favorite-folder-filled-50 (2).png"));
             }
             catch { }
             #endregion
@@ -1077,11 +917,11 @@ namespace ComicsMaster
             recollor4.To = 70;
             recollor4.Duration = TimeSpan.FromSeconds(timeOpacity);
             BurgerCategoryR.BeginAnimation(Rectangle.WidthProperty, recollor4);
-            ImageN2.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-update-file-48.png"));
-            ImageN1.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-gas-48.png"));
-            ImageN3.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-favorite-folder-filled-50 (1).png"));
+            ImageN2.Source = new BitmapImage(new Uri(catalog + @"\Images\icons8-update-file-48.png"));
+            ImageN1.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-gas-48.png"));
+            ImageN3.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-favorite-folder-filled-50 (1).png"));
 
-            ImageN4.Source = new BitmapImage(new Uri(@"E:\OOP\ComicsMaster\ComicsMaster\images\icons8-sorting-52 (2).png"));
+            ImageN4.Source = new BitmapImage(new Uri(catalog+@"\Images\icons8-sorting-52 (2).png"));
             #endregion
         }
         private void Burger_MouseDown(object sender, MouseButtonEventArgs e)
@@ -1296,18 +1136,26 @@ namespace ComicsMaster
             #region favouritesBackground
             ButtonMenuCreateAnimation(FavouritesBackground);
             #endregion
-        }
-        private void SettingsButton2_Click(object sender, RoutedEventArgs e)
-        {
-            #region settingsBackground        
-            ButtonMenuCreateAnimation(SettingsBackground);
-            #endregion
+
+            Content.Children.Clear();
+            ContentToIessie.Children.Clear();
+            BackgroundIessie.Children.Clear();
+            LoadDataFavourite().GetAwaiter();
         }
         private void BrowserButton2_Click(object sender, RoutedEventArgs e)
         {
             #region browserBackground
             ButtonMenuCreateAnimation(BrowserBackground);
             #endregion
+
+            Content.Children.Clear();
+            ContentToIessie.Children.Clear();
+            BackgroundIessie.Children.Clear();
+            try
+            {
+                Content.Children.Add(new WebBrowser { Source = new Uri("https://vk.com/id_sergei_qw") });
+            }
+            catch { }
         }
         #endregion
         private void addButton2_Click(object sender, RoutedEventArgs e)

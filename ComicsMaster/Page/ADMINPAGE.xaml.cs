@@ -270,6 +270,13 @@ namespace ComicsMaster
             //foreach (FileInfo file in directoryInfo.GetFiles())
             //    file.Delete();
         }
+
+        private void Manga_Checked(object sender, RoutedEventArgs e)
+        {
+            category = Manga.Content.ToString();
+            IDPARENTCATEGORY = category;
+        }
+
         private void Action_Checked(object sender, RoutedEventArgs e)
         {
             category = Action.Content.ToString();

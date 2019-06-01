@@ -20,6 +20,7 @@
         <RadioButton x:Name="Mistery"  Margin="568,25,65,396" Checked="Mistery_Checked">MISTERY</RadioButton>
         <RadioButton x:Name="Demons"  Margin="257,54,441,367" Checked="Demons_Checked">DEMONS</RadioButton>
         <RadioButton x:Name="Tragedy"  Margin="381,54,330,367" Checked="Tragedy_Checked">TRAGEDY</RadioButton>
+        <RadioButton x:Name="Manga"  Margin="150,54,561,367" Checked="Manga_Checked">MANGA</RadioButton>
         <TextBox x:Name="title" Margin="292,123,293,297"/>
         <Button x:Name="images" Margin="332,288,331,132" Click="Get_image_Click" Style="{StaticResource ButtonSignStyle}">COMICS COVER</Button>
         <Button x:Name="imagesWalpaper" Margin="512,288,151,132" Click="Get_walpaper_Click" Style="{StaticResource ButtonSignStyle}">COMICS WALPAPER</Button>
